@@ -4,38 +4,22 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+{% load static %}
 <html>
 	<head>
 		<title>Elements Reference - Massively by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="{% static 'general/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'general/assets/css/navbar.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'general/assets/css/noscript.css' %}" /></noscript>
 	</head>
 	<body class="is-preload">
 
+		{% include 'general/navbar.html' %}
+
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
-					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li class="active"><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
 
 				<!-- Main -->
 					<div id="main">
@@ -187,7 +171,7 @@
 
 								<!-- Blockquote -->
 									<h2>Blockquote</h2>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis.</blockquote>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis.</blockquote>
 
 									<hr />
 
@@ -486,13 +470,14 @@ print 'It took ' + i + ' iterations to sort the deck.';
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="{% static 'general/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/util.js' %}"></script>
+			<script src="{% static 'general/assets/js/main.js' %}"></script>
+			<script src="{% static 'general/assets/js/navbar.js' %}"></script>
 
 	</body>
 </html>

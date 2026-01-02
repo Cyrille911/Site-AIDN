@@ -3599,6 +3599,213 @@ input, select, textarea {
 
 		}
 
+/* Modern Transparent Navbar */
+	.modern-navbar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1000;
+		background: transparent;
+		padding: 1rem 2rem;
+		transition: background 1s ease ;
+	}
+
+	.modern-navbar:hover {
+		background: rgba(0, 0, 0, 0.4);
+	}
+
+	.modern-navbar.scrolled {
+		background: rgba(0, 0, 0, 0.4);
+		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	.navbar-container {
+		max-width: 1400px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+
+	/* Logo */
+	.navbar-logo a {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		text-decoration: none;
+		color: #ffffff;
+		font-weight: 700;
+		font-size: 1.5rem;
+		transition: opacity 0.3s ease;
+	}
+
+	.navbar-logo a:hover {
+		opacity: 0.8;
+	}
+
+	.logo-icon {
+		font-size: 1.8rem;
+		color: #00d4ff;
+	}
+
+	.logo-text {
+		letter-spacing: 0.05em;
+	}
+
+	/* Navigation Menu */
+	.navbar-menu {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		gap: 2rem;
+		flex: 1;
+		justify-content: center;
+	}
+
+	.navbar-menu li {
+		margin: 0;
+	}
+
+	.nav-link {
+		color: #ffffff;
+		text-decoration: none;
+		font-size: 0.95rem;
+		font-weight: 500;
+		padding: 0.5rem 0;
+		position: relative;
+		transition: color 0.3s ease;
+		white-space: nowrap;
+	}
+
+	.nav-link:hover {
+		color: #00d4ff;
+	}
+
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: #00d4ff;
+		transition: width 0.3s ease;
+	}
+
+	.nav-link:hover::after {
+		width: 100%;
+	}
+
+	/* Right Section */
+	.navbar-right {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	/* Language Selector */
+	.language-selector {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #ffffff;
+		font-size: 0.9rem;
+		cursor: pointer;
+		padding: 0.5rem 1rem;
+		border-radius: 5px;
+		transition: background 0.3s ease;
+	}
+
+	.language-selector:hover {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.globe-icon {
+		font-size: 1.1rem;
+	}
+
+	.dropdown-arrow {
+		font-size: 0.7rem;
+		opacity: 0.7;
+	}
+
+	/* Contact Button */
+	.contact-btn {
+		background: transparent;
+		color: #ffffff;
+		border: 2px solid #ffffff;
+		padding: 0.7rem 2rem;
+		border-radius: 25px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.9rem;
+		transition: all 0.3s ease;
+		white-space: nowrap;
+	}
+
+	.contact-btn:hover {
+		background: #ffffff;
+		color: #000000;
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 1024px) {
+		.navbar-menu {
+			gap: 1.5rem;
+		}
+		
+		.navbar-container {
+			gap: 1rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.modern-navbar {
+			padding: 1rem;
+		}
+		
+		.navbar-menu {
+			display: none;
+		}
+		
+		.language-selector {
+			padding: 0.3rem 0.5rem;
+			font-size: 0.8rem;
+		}
+		
+		.contact-btn {
+			padding: 0.5rem 1.5rem;
+			font-size: 0.85rem;
+		}
+		
+		/* Mobile menu toggle (to be implemented with JavaScript) */
+		.mobile-menu-toggle {
+			display: block;
+			background: none;
+			border: none;
+			color: #ffffff;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+	}
+
+	/* Adjust body padding to account for fixed navbar */
+	body {
+		padding-top: 80px;
+	}
+
+	/* Special styling for intro section to overlap navbar */
+	#intro {
+		margin-top: -80px;
+		padding-top: 80px;
+	}
+
+
 /* Nav */
 
 	#nav {
@@ -3749,75 +3956,162 @@ input, select, textarea {
 
 		}
 
-/* Main */
-
-	#main {
-		background-color: #ffffff;
-		position: relative;
-		margin: 0 auto;
-		width: calc(100% - 4rem);
-		max-width: 72rem;
-		z-index: 2;
-	}
+	/* Main */
+		#main {
+			background-color: #ffffff;
+			position: relative;
+			margin: 0 auto;
+			width: calc(100% - 4rem);
+			max-width: 72rem;
+			z-index: 2;
+		}
 
 		#main > * {
-			padding: 4rem 4rem 2rem 4rem ;
+			padding: 4rem 4rem 2rem 4rem;
 			border-top: solid 2px #eeeeee;
 			margin: 0;
 		}
 
-			#main > *:first-child {
-				border-top: 0;
-			}
+		#main > *:first-child {
+			border-top: 0;
+		}
 
 		#main > footer {
 			text-align: center;
 		}
 
 		#main > .post {
-			padding: 8rem 8rem 6rem 8rem ;
+			padding: 8rem 8rem 6rem 8rem;
+			position: relative; /* Nécessaire pour positionner le texte overlay par-dessus la vidéo */
+			overflow: hidden;
 		}
 
+		#main > .post header.major > .date {
+			margin-top: -2rem;
+		}
+
+		#main > .post header.major > h1,
+		#main > .post header.major h2 {
+			font-size: 3.7rem;
+			line-height: 1.2;
+			margin: 0 0 2rem 0;
+			color: #333333; /* Couleur sombre pour bien contraster sur fond clair ou vidéo */
+		}
+
+
+		#main > .post video {
+			width: 100%;
+			height: 80vh;
+			object-fit: cover;
+			display: block;
+			margin: 3rem 0;
+			border-radius: 12px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+			position: relative; /* IMPORTANT : permet de positionner l'overlay en absolu à l'intérieur */
+			background: #000; /* Au cas où la vidéo met du temps à charger */
+		}
+
+		#main > .post video.active {
+			opacity: 1;
+		}
+
+		/* Overlay texte : couvre toute la vidéo */
+		#video-text-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;    /* Centre verticalement */
+			justify-content: center; /* Centre horizontalement */
+			pointer-events: none;   /* Permet de cliquer sur la vidéo si besoin (ex: controls) */
+			z-index: 10;
+			padding: 2rem;          /* Espace intérieur pour que le texte ne colle pas aux bords */
+			box-sizing: border-box; /* Le padding est inclus dans la largeur/hauteur */
+		}
+
+		/* Le texte machine à écrire */
+		#video-text {
+			color: #ffffff;
+			font-size: 2.4rem;
+			font-weight: 600;
+			line-height: 1.4;
+			text-align: center;
+			text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9); /* Ombre forte pour lisibilité */
+			background: rgba(0, 0, 0, 0.5);             /* Fond semi-transparent pour contraste */
+			padding: 2rem 3rem;
+			border-radius: 16px;
+			max-width: 90%;                            /* Limite la largeur pour éviter débordement sur petits écrans */
+			backdrop-filter: blur(2px);                /* Effet flou moderne (optionnel mais beau) */
+		}
+
+		#video-text::after {
+			content: "|";
+			margin-left: 8px;
+			animation: blink 1s infinite;
+		}
+
+		@keyframes blink {
+			0%, 50%, 100% { opacity: 1; }
+			25%, 75% { opacity: 0; }
+		}
+
+		/* Bouton */
+		#main .actions.special {
+			text-align: center;
+			margin-top: 3rem;
+		}
+
+		/* Responsive */
+		@media screen and (max-width: 1280px) {
+			#main > .post {
+				padding: 4rem 4rem 4rem 4rem;
+			}
+		}
+
+		@media screen and (max-width: 736px) {
+			#main > .post {
+				padding: 4rem 2rem 2rem 2rem;
+			}
+
 			#main > .post header.major > .date {
-				margin-top: -2rem;
+				margin-top: -1rem;
+				margin-bottom: 2rem;
 			}
 
-			#main > .post header.major > h1, #main > .post header.major h2 {
-				font-size: 4rem;
-				line-height: 1.1;
-				margin: 0 0 2rem 0;
+			#main > .post header.major > h1,
+			#main > .post header.major h2 {
+				font-size: 2.4rem;
 			}
 
-			#main > .post.featured {
-				text-align: center;
+			#main > .post video {
+				height: 70vh;
+				margin: 2rem 0;
+				border-radius: 8px;
 			}
 
-			@media screen and (max-width: 1280px) {
-
-				#main > .post {
-					padding: 6rem 4rem 4rem 4rem ;
-				}
-
+			#video-text-overlay {
+				bottom: 2.5rem;
 			}
 
-			@media screen and (max-width: 736px) {
-
-				#main > .post {
-					padding: 4rem 2rem 2rem 2rem ;
-				}
-
-					#main > .post header.major > .date {
-						margin-top: -1rem;
-						margin-bottom: 2rem;
-					}
-
-					#main > .post header.major > h1, #main > .post header.major h2 {
-						font-size: 2.5rem;
-						line-height: 1.2;
-						margin: 0 0 1.5rem 0;
-					}
-
+			#video-text {
+				font-size: 1.6rem;
+				padding: 1rem 1.8rem;
 			}
+		}
+
+		@media screen and (max-width: 480px) {
+			#main > .post header.major h2 {
+				font-size: 2rem;
+			}
+
+			#video-text {
+				font-size: 1.4rem;
+			}
+		}
 
 		#main > .posts {
 			display: -moz-flex;

@@ -7,16 +7,47 @@
 {% load static %}
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>AIDN</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'general/assets/css/main.css' %}" />
-		<link rel="stylesheet" href="{% static 'general/assets/css/navbar.css' %}" />
 		<noscript><link rel="stylesheet" href="{% static 'general/assets/css/noscript.css' %}" /></noscript>
 	</head>
-	<body class="is-preload">
 
-		{% include 'general/navbar.html' %}
+	<body class="is-preload">
+		<!-- Transparent navbar -->
+			<nav class="modern-navbar">
+				<div class="navbar-container">
+					<!-- Logo -->
+					<div class="navbar-logo">
+						<a href="{% url 'accueil' %}">
+							<span class="logo-icon">◆</span>
+							<span class="logo-text">AIDN</span>
+						</a>
+					</div>
+
+					<!-- Navigation Links -->
+					<ul class="navbar-menu">
+						<li><a href="#" class="nav-link">Nos métiers</a></li>
+						<li><a href="#" class="nav-link">Portfolio</a></li>
+						<li><a href="#" class="nav-link">Info Hub</a></li>
+						<li><a href="#" class="nav-link">À propos</a></li>
+					</ul>
+
+					<!-- Right Section -->
+					<div class="navbar-right">
+						<!-- Language Selector -->
+						<div class="language-selector">
+							<span class="globe-icon">🌐</span>
+							<span>Français</span>
+							<span class="dropdown-arrow">▼</span>
+						</div>
+
+						<!-- Contact Button -->
+						<a href="#contact" class="contact-btn">Contact</a>
+					</div>
+				</div>
+			</nav>
 
 		<!-- Wrapper -->
 			<div id="wrapper">

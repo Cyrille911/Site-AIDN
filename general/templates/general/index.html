@@ -8,17 +8,47 @@
 {% load static %}
 <html>
 	<head>
-		<title>Massively by HTML5 UP</title>
+		<title>AIDN</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'general/assets/css/main.css' %}" />
-		<link rel="stylesheet" href="{% static 'general/assets/css/navbar.css' %}" />
 		<noscript><link rel="stylesheet" href="{% static 'general/assets/css/noscript.css' %}" /></noscript>
 	</head>
 
 	<body class="is-preload">
+		<!-- Modern Transparent Navbar -->
+			<nav class="modern-navbar">
+				<div class="navbar-container">
+					<!-- Logo -->
+					<div class="navbar-logo">
+						<a href="{% url 'accueil' %}">
+							<span class="logo-icon">◆</span>
+							<span class="logo-text">AIDN</span>
+						</a>
+					</div>
 
-		{% include 'general/navbar.html' %}
+					<!-- Navigation Links -->
+					<ul class="navbar-menu">
+						<li><a href="#" class="nav-link">Nos métiers</a></li>
+						<li><a href="#" class="nav-link">Portfolio</a></li>
+						<li><a href="#" class="nav-link">Info Hub</a></li>
+						<li><a href="#" class="nav-link">À propos</a></li>
+					</ul>
+
+					<!-- Right Section -->
+					<div class="navbar-right">
+						<!-- Language Selector -->
+						<div class="language-selector">
+							<span class="globe-icon">🌐</span>
+							<span>Français</span>
+							<span class="dropdown-arrow">▼</span>
+						</div>
+
+						<!-- Contact Button -->
+						<a href="#contact" class="contact-btn">Contact</a>
+					</div>
+				</div>
+			</nav>
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
@@ -27,41 +57,76 @@
 					</video>
 				<!-- Intro -->
 					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+						<h1>Agence Ivoirienne<br />
+						de Développement Numérique</h1>
+						<p>Vous faire <a href="#">rêver</a> à travers le <a href="#">digital </a>!</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
 					</div>
 
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Massively</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">This is Massively</a></li>
+							<li><a href="#">Generic Page</a></li>
+							<li><a href="#">Elements Reference</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
 				<!-- Main -->
 					<div id="main">
+						<article class="post featured">
+							<header class="major">
+								<span class="date">April 25, 2017</span>
+								<h2>
+									<a href="#">L'intelligence Numérique Au<br>Service De La Transformation</a>
+								</h2>
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="{% static 'general/images/pic01.jpg' %}" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
+								<!-- La vidéo est maintenant ici, dans le flux normal -->
+								<video autoplay muted loop playsinline id="video-slider" class="active">
+									<!-- Overlay texte directement dans la vidéo -->
+								</video>
+								
+								<div id="video-text-overlay">
+									<div id="video-text"></div>
+								</div>
 
+							</header>
+
+							<ul class="actions special">
+								<li><a href="#" class="button large">Voir Plus</a></li>
+							</ul>
+						</article>
+						
 						<!-- Posts -->
 							<section class="posts">
 								<article>
 									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
+										<h2><a href="#">Conception Web,<br />
+										Génie Logiciel</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="{% static 'general/images/pic01.jpg' %}" alt="" /></a>
+									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<ul class="actions special">
+										<li><a href="#" class="button">Full Story</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2><a href="#">Sécurité<br />
+										Informatique</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic02.jpg' %}" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
@@ -71,9 +136,8 @@
 								</article>
 								<article>
 									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
+										<h2><a href="#">Cloud, DevOps &<br />
+										Infrastructure</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic03.jpg' %}" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
@@ -83,9 +147,8 @@
 								</article>
 								<article>
 									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
+										<h2><a href="#">Etudes <br />
+										Statistiques</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic04.jpg' %}" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
@@ -95,9 +158,8 @@
 								</article>
 								<article>
 									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
+										<h2><a href="#">Data Science &<br />
+										Intelligence Artificielle</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic05.jpg' %}" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
@@ -107,23 +169,10 @@
 								</article>
 								<article>
 									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
+										<h2><a href="#">Infographie &<br />
+										Imprimerie</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic06.jpg' %}" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="{% static 'general/images/pic07.jpg' %}" alt="" /></a>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul class="actions special">
 										<li><a href="#" class="button">Full Story</a></li>
@@ -164,6 +213,74 @@
 			<script src="{% static 'general/assets/js/util.js' %}"></script>
 			<script src="{% static 'general/assets/js/main.js' %}"></script>
 			<script src="{% static 'general/assets/js/navbar.js' %}"></script>
+			<script>
+				const videos = [
+					{
+						src: "{% static 'general/videos/video1.mp4' %}",
+						text: "Bienvenue dans notre premier module vidéo<br>Découvrez les innovations numériques"
+					},
+					{
+						src: "{% static 'general/videos/video2.mp4' %}",
+						text: "Innovation & Performance<br>au cœur de l'État"
+					},
+					{
+						src: "{% static 'general/videos/video3.mp4' %}",
+						text: "Données & Décision<br>pour le Développement"
+					}
+				];
 
+				let currentIndex = 0;
+				const videoEl = document.getElementById("video-slider");
+				const textEl = document.getElementById("video-text");
+
+				// Préchargement des vidéos
+				const preloadVideos = videos.map(video => {
+					const vid = document.createElement("video");
+					vid.src = video.src;
+					vid.muted = true;
+					vid.playsInline = true;
+					return vid;
+				});
+
+				// Fonction d'animation texte lettre par lettre
+				function typeText(htmlText, speed = 50) {
+					textEl.innerHTML = "";
+					let i = 0;
+					const type = () => {
+						if (i < htmlText.length) {
+							textEl.innerHTML += htmlText.charAt(i);
+							i++;
+							setTimeout(type, speed);
+						}
+					};
+					type();
+				}
+
+				// Chargement de la vidéo suivante avec fade
+				function loadNextVideo() {
+					currentIndex = (currentIndex + 1) % videos.length;
+
+					// Fade out
+					videoEl.classList.remove("active");
+
+					setTimeout(() => {
+						videoEl.src = videos[currentIndex].src;
+						videoEl.load();
+						videoEl.play();
+						videoEl.classList.add("active");
+
+						// Animation du texte correspondant
+						typeText(videos[currentIndex].text);
+					}, 1000); // correspond à la durée de la transition CSS
+				}
+
+				// Écouter la fin de la vidéo courante
+				videoEl.addEventListener("ended", loadNextVideo);
+
+				// Démarrage initial
+				videoEl.src = videos[0].src;
+				videoEl.classList.add("active");
+				typeText(videos[0].text);
+			</script>
 	</body>
 </html>

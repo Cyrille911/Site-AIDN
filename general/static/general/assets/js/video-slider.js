@@ -1,15 +1,15 @@
 const videos = [
     {
-        src: "{% static 'general/videos/video1.mp4' %}",
-        text: "Bienvenue dans notre premier module vidéo<br>Découvrez les innovations numériques"
+        src: "/static/general/videos/video1.mp4",
+        text: "Promouvoir une Côte d'Ivoire connectée,<br>Hub de l'Afrique Moderne !"
     },
     {
-        src: "{% static 'general/videos/video2.mp4' %}",
-        text: "Innovation & Performance<br>au cœur de l'État"
+        src: "/static/general/videos/video2.mp4",
+        text: "Le génie ivoirien à l'œuvre d'une nouvelle ère !"
     },
     {
-        src: "{% static 'general/videos/video3.mp4' %}",
-        text: "Données & Décision<br>pour le Développement"
+        src: "/static/general/videos/video3.mp4",
+        text: "La science des données au cœur de<br>l'Intelligence Economique !"
     }
 ];
 
@@ -30,15 +30,18 @@ const preloadVideos = videos.map(video => {
 function typeText(htmlText, speed = 50) {
     textEl.innerHTML = "";
     let i = 0;
+
     const type = () => {
-        if (i < htmlText.length) {
-            textEl.innerHTML += htmlText.charAt(i);
+        if (i <= htmlText.length) {
+            textEl.innerHTML = htmlText.slice(0, i);
             i++;
             setTimeout(type, speed);
         }
     };
+
     type();
 }
+
 
 // Chargement de la vidéo suivante avec fade
 function loadNextVideo() {

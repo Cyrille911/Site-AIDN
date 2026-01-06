@@ -95,8 +95,8 @@
 								</h2>
 
 								<!-- La vidéo est maintenant ici, dans le flux normal -->
-								<video autoplay muted loop playsinline id="video-slider" class="active">
-									<!-- Overlay texte directement dans la vidéo -->
+								<video autoplay muted playsinline id="video-slider" class="active">
+
 								</video>
 								
 								<div id="video-text-overlay">
@@ -118,9 +118,9 @@
 										Génie Logiciel</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic01.jpg' %}" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<p>Nous concevons et développons des solutions numériques performantes et adaptées aux besoins des organisations. Du site vitrine aux applications métiers complexes, nous assurons une architecture robuste, une ergonomie moderne et une expérience utilisateur fluide.</p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">Voir +</a></li>
 									</ul>
 								</article>
 								<article>
@@ -129,9 +129,9 @@
 										Informatique</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic02.jpg' %}" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<p>Nous mettons en place des dispositifs avancés de sécurité afin de protéger les systèmes d’information contre les menaces internes et externes. Audit, prévention, détection des vulnérabilités et accompagnement stratégique permettent d’assurer la confidentialité, l’intégrité et la disponibilité des données.</p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">Voir +</a></li>
 									</ul>
 								</article>
 								<article>
@@ -140,9 +140,9 @@
 										Infrastructure</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic03.jpg' %}" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<p>Nous accompagnons la modernisation des infrastructures informatiques grâce au Cloud, au DevOps et aux technologies d’automatisation. Nos solutions améliorent les performances, réduisent les coûts, renforcent la résilience et facilitent le déploiement rapide des services numériques.</p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">Voir +</a></li>
 									</ul>
 								</article>
 								<article>
@@ -151,9 +151,9 @@
 										Statistiques</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic04.jpg' %}" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<p>Nous produisons des analyses statistiques fiables pour appuyer la prise de décision. Collecte, traitement, modélisation et interprétation des données permettent de fournir des indicateurs pertinents pour le suivi, l’évaluation et la planification stratégique.</p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">Voir +</a></li>
 									</ul>
 								</article>
 								<article>
@@ -162,9 +162,9 @@
 										Intelligence Artificielle</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic05.jpg' %}" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<p>Grâce à la Data Science et à l’IA, nous transformons les données en informations exploitables. Nous développons des modèles prédictifs, des outils d’aide à la décision et des solutions intelligentes capables d’optimiser les processus et d’anticiper les évolutions.</p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">Voir +</a></li>
 									</ul>
 								</article>
 								<article>
@@ -173,29 +173,63 @@
 										Imprimerie</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="{% static 'general/images/pic06.jpg' %}" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<p>Nous réalisons des supports graphiques professionnels et des visuels de haute qualité pour la communication institutionnelle et professionnelle. De la création à l’impression, nous garantissons une identité visuelle moderne, cohérente et impactante.</p>
 									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+										<li><a href="#" class="button">Voir +</a></li>
 									</ul>
 								</article>
 							</section>
 
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
-
 					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Nom</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Envoyer" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Adresse</h3>
+								<p>Côte d'Ivoire<br />
+								Abidjan, Cocody</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(+225) 05 56 02 51 30</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">aidn.tech@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Résaux Sociaux</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
 
 				<!-- Copyright -->
 					<div id="copyright">
@@ -203,7 +237,7 @@
 					</div>
 
 			</div>
-
+		
 		<!-- Scripts -->
 			<script src="{% static 'general/assets/js/jquery.min.js' %}"></script>
 			<script src="{% static 'general/assets/js/jquery.scrollex.min.js' %}"></script>
@@ -213,74 +247,6 @@
 			<script src="{% static 'general/assets/js/util.js' %}"></script>
 			<script src="{% static 'general/assets/js/main.js' %}"></script>
 			<script src="{% static 'general/assets/js/navbar.js' %}"></script>
-			<script>
-				const videos = [
-					{
-						src: "{% static 'general/videos/video1.mp4' %}",
-						text: "Bienvenue dans notre premier module vidéo<br>Découvrez les innovations numériques"
-					},
-					{
-						src: "{% static 'general/videos/video2.mp4' %}",
-						text: "Innovation & Performance<br>au cœur de l'État"
-					},
-					{
-						src: "{% static 'general/videos/video3.mp4' %}",
-						text: "Données & Décision<br>pour le Développement"
-					}
-				];
-
-				let currentIndex = 0;
-				const videoEl = document.getElementById("video-slider");
-				const textEl = document.getElementById("video-text");
-
-				// Préchargement des vidéos
-				const preloadVideos = videos.map(video => {
-					const vid = document.createElement("video");
-					vid.src = video.src;
-					vid.muted = true;
-					vid.playsInline = true;
-					return vid;
-				});
-
-				// Fonction d'animation texte lettre par lettre
-				function typeText(htmlText, speed = 50) {
-					textEl.innerHTML = "";
-					let i = 0;
-					const type = () => {
-						if (i < htmlText.length) {
-							textEl.innerHTML += htmlText.charAt(i);
-							i++;
-							setTimeout(type, speed);
-						}
-					};
-					type();
-				}
-
-				// Chargement de la vidéo suivante avec fade
-				function loadNextVideo() {
-					currentIndex = (currentIndex + 1) % videos.length;
-
-					// Fade out
-					videoEl.classList.remove("active");
-
-					setTimeout(() => {
-						videoEl.src = videos[currentIndex].src;
-						videoEl.load();
-						videoEl.play();
-						videoEl.classList.add("active");
-
-						// Animation du texte correspondant
-						typeText(videos[currentIndex].text);
-					}, 1000); // correspond à la durée de la transition CSS
-				}
-
-				// Écouter la fin de la vidéo courante
-				videoEl.addEventListener("ended", loadNextVideo);
-
-				// Démarrage initial
-				videoEl.src = videos[0].src;
-				videoEl.classList.add("active");
-				typeText(videos[0].text);
-			</script>
+			<script src="{% static 'general/assets/js/video-slider.js' %}"></script>
 	</body>
 </html>

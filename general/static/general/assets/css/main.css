@@ -4036,16 +4036,14 @@ input, select, textarea {
 		/* Le texte machine à écrire */
 		#video-text {
 			color: #ffffff;
-			font-size: 2.4rem;
+			font-size: 2.7rem;
 			font-weight: 600;
 			line-height: 1.4;
 			text-align: center;
-			text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9); /* Ombre forte pour lisibilité */
-			background: rgba(0, 0, 0, 0.5);             /* Fond semi-transparent pour contraste */
+			text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
 			padding: 2rem 3rem;
 			border-radius: 16px;
-			max-width: 90%;                            /* Limite la largeur pour éviter débordement sur petits écrans */
-			backdrop-filter: blur(2px);                /* Effet flou moderne (optionnel mais beau) */
+			max-width: 90%;
 		}
 
 		#video-text::after {

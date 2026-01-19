@@ -17,40 +17,53 @@
 
 	<body class="is-preload">
 		<!-- Modern Transparent Navbar -->
-			<nav class="modern-navbar">
-				<div class="navbar-container">
-					<!-- Logo -->
-					<div class="navbar-logo">
-						<a href="{% url 'accueil' %}">
-							<span class="logo-icon">◆</span>
-							<span class="logo-text">AIDN</span>
-						</a>
-					</div>
+		<style>
+		@media screen and (max-width: 768px) {
+			.modern-navbar {
+				display: none;
+			}
+		}
 
-					<!-- Navigation Links -->
-					<ul class="navbar-menu">
-						<li><a href="#" class="nav-link">Accueil</a></li>
-						<li><a href="#" class="nav-link">Nos métiers</a></li>
-						<li><a href="#" class="nav-link">Nos produits</a></li>
-						<li><a href="#" class="nav-link">Info Hub</a></li>
-						<li><a href="#" class="nav-link">À propos</a></li>
-						<li><a href="#" class="nav-link">Nous joindre</a></li>
-					</ul>
-
-					<!-- Right Section -->
-					<div class="navbar-right">
-						<!-- Language Selector -->
-						<div class="language-selector">
-							<span class="globe-icon">🌐</span>
-							<span>Français</span>
-							<span class="dropdown-arrow">▼</span>
-						</div>
-
-						<!-- Contact Button -->
-						<a href="#contact" class="contact-btn">Contact</a>
-					</div>
+		@media screen and (min-width: 769px) {
+			.modern-navbar {
+				display: block;
+			}
+		}
+		</style>
+		<nav class="modern-navbar" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+			<div class="navbar-container" style="background-color: rgba(0, 0, 0, 0.5);">
+				<!-- Logo -->
+				<div class="navbar-logo">
+					<a href="{% url 'accueil' %}">
+						<span class="logo-icon">◆</span>
+						<span class="logo-text">AIDN</span>
+					</a>
 				</div>
-			</nav>
+
+				<!-- Navigation Links -->
+				<ul class="navbar-menu">
+					<li><a href="#" class="nav-link">Accueil</a></li>
+					<li><a href="#" class="nav-link">Nos métiers</a></li>
+					<li><a href="#" class="nav-link">Nos produits</a></li>
+					<li><a href="#" class="nav-link">Info Hub</a></li>
+					<li><a href="#" class="nav-link">À propos</a></li>
+					<li><a href="#" class="nav-link">Nous joindre</a></li>
+				</ul>
+
+				<!-- Right Section -->
+				<div class="navbar-right">
+					<!-- Language Selector -->
+					<div class="language-selector">
+						<span class="globe-icon">🌐</span>
+						<span>Français</span>
+						<span class="dropdown-arrow">▼</span>
+					</div>
+
+					<!-- Contact Button -->
+					<a href="#contact" class="contact-btn">Contact</a>
+				</div>
+			</div>
+		</nav>
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
@@ -186,6 +199,7 @@
 					</div>
 
 				<!-- Footer -->
+				<section style="padding-top: 50px; background-color: rgba(255, 255, 255, 0)"></section>
 					<footer id="footer">
 						<section>
 							<form method="post" action="#">

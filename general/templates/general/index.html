@@ -13,6 +13,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'general/assets/css/main.css' %}" />
 		<noscript><link rel="stylesheet" href="{% static 'general/assets/css/noscript.css' %}" /></noscript>
+
+		<!-- ... ton contenu ... -->
+
+
 	</head>
 
 	<body class="is-preload">
@@ -54,9 +58,11 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
+				<!-- Background video -->
 					<video autoplay muted loop playsinline id="bg-video">
 						<source src="{% static '/general/videos/bg.mp4' %}" type="video/mp4">
 					</video>
+					
 				<!-- Intro -->
 					<div id="intro">
 						<h1>Agence Ivoirienne de<br />
@@ -97,10 +103,7 @@
 									<a href="#">L'intelligence Numérique Au<br>Service De La Transformation</a>
 								</h2>
 
-								<!-- La vidéo est maintenant ici, dans le flux normal -->
-								<video autoplay muted playsinline id="video-slider" class="active">
-
-								</video>
+								<video autoplay muted playsinline id="video-slider" class="active"></video>
 								
 								<div id="video-text-overlay">
 									<div id="video-text"></div>
@@ -185,8 +188,9 @@
 
 					</div>
 
+					<section style="padding-top: 15px; background-color: rgba(255, 255, 255, 0)"></section>
+
 				<!-- Footer -->
-				<section style="padding-top: 50px; background-color: rgba(255, 255, 255, 0)"></section>
 					<footer id="footer">
 						<section>
 							<form method="post" action="#">
@@ -250,7 +254,18 @@
 			<script src="{% static 'general/assets/js/breakpoints.min.js' %}"></script>
 			<script src="{% static 'general/assets/js/util.js' %}"></script>
 			<script src="{% static 'general/assets/js/main.js' %}"></script>
-			<script src="{% static 'general/assets/js/navbar.js' %}"></script>
 			<script src="{% static 'general/assets/js/video-slider.js' %}"></script>
+			<script>
+				window.addEventListener("scroll", function() {
+					const navbar = document.querySelector(".modern-navbar");
+					if (!navbar) return; // sécurité
+					
+					if (window.scrollY > 50) {
+						navbar.classList.add("scrolled");
+					} else {
+						navbar.classList.remove("scrolled");
+					}
+				});
+			</script>
 	</body>
 </html>

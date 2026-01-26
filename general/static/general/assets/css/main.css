@@ -143,6 +143,18 @@ input, select, textarea {
 
 		}
 
+		@media screen and (max-width: 768px) {
+			.modern-navbar {
+				display: none;
+			}
+		}
+
+		@media screen and (min-width: 769px) {
+			.modern-navbar {
+				display: block;
+			}
+		}
+
 	body {
 		color: #212931;
 	}
@@ -3617,7 +3629,6 @@ input, select, textarea {
 
 	.modern-navbar.scrolled {
 		background: rgba(0, 0, 0, 0.4);
-		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 	}
 
 	.navbar-container {

@@ -17,21 +17,8 @@
 
 	<body class="is-preload">
 		<!-- Modern Transparent Navbar -->
-		<style>
-		@media screen and (max-width: 768px) {
-			.modern-navbar {
-				display: none;
-			}
-		}
-
-		@media screen and (min-width: 769px) {
-			.modern-navbar {
-				display: block;
-			}
-		}
-		</style>
-		<nav class="modern-navbar" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
-			<div class="navbar-container" style="background-color: rgba(0, 0, 0, 0.5);">
+		<nav class="modern-navbar">
+			<div class="navbar-container">
 				<!-- Logo -->
 				<div class="navbar-logo">
 					<a href="{% url 'accueil' %}">
@@ -72,8 +59,8 @@
 					</video>
 				<!-- Intro -->
 					<div id="intro">
-						<h1>Agence Ivoirienne<br />
-						de Développement Numérique</h1>
+						<h1>Agence Ivoirienne de<br />
+						Développement Numérique</h1>
 						<p>Vous faire <a href="#">rêver</a> à travers le <a href="#">digital </a>!</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>

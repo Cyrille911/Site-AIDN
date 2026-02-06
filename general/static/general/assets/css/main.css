@@ -4020,8 +4020,8 @@ input, select, textarea {
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 			opacity: 0;
 			transition: opacity 1s ease-in-out;
-			position: relative; /* IMPORTANT : permet de positionner l'overlay en absolu à l'intérieur */
-			background: #000; /* Au cas où la vidéo met du temps à charger */
+			position: relative;
+			background: #000;
 		}
 
 		#main > .post video.active {
@@ -4121,7 +4121,9 @@ input, select, textarea {
 				font-size: 1.4rem;
 			}
 		}
-
+		/* 
+		
+		*/
 		#main > .posts {
 			display: -moz-flex;
 			display: -webkit-flex;
@@ -4178,6 +4180,12 @@ input, select, textarea {
 
 				#main > .posts > article:nth-child(-n + 2) {
 					border-top-width: 0;
+				}
+
+				#main > .posts > article .image {
+					max-width: 25rem;
+					margin-left: auto;
+					margin-right: auto;
 				}
 
 			@media screen and (max-width: 980px) {

@@ -1,0 +1,23 @@
+version: '3.8'
+
+# Development configuration - uses SQLite and hot reload
+services:
+  web:
+    build: .
+    container_name: aidn-web-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=dev-secret-key-not-for-production
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+    entrypoint: []
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  static_volume:

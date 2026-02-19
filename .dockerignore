@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+
+# Python
+myvenv/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.*
+
+# Database
+db.sqlite3
+*.sqlite3
+
+# Build artifacts
+build/
+dist/
+staticfiles/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+README.md
+*.md

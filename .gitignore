@@ -29,3 +29,6 @@ dist/
 *.egg-info/
 
 local_settings.py
+
+# Docker
+.docker/

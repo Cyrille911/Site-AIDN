@@ -31,15 +31,22 @@
 					</a>
 				</div>
 
+				<!-- Mobile Menu Toggle -->
+				<button class="mobile-menu-toggle" id="mobile-menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+
 				<!-- Navigation Links -->
 				 <!-- Navigation Links -->
-				<ul class="navbar-menu">
+				<ul class="navbar-menu" id="navbar-menu">
 					<li><a href="#" class="nav-link">Accueil</a></li>
-					<li><a href="#" class="nav-link">Nos métiers</a></li>
+					<!--<li><a href="#" class="nav-link">Nos métiers</a></li>
 					<li><a href="#" class="nav-link">Nos produits</a></li>
 					<li><a href="#" class="nav-link">Portfolio</a></li>
 					<li><a href="#" class="nav-link">À propos</a></li>
-					<li><a href="#" class="nav-link">Nous joindre</a></li>
+					<li><a href="#" class="nav-link">Nous joindre</a></li>-->
 				</ul>
 
 				<!-- Right Section -->
@@ -69,7 +76,9 @@
 						<h1 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 0.5rem; text-align: center; font-weight: 300;">Agence Ivoirienne de<br />
 						Développement Numérique</h1>
 						<p style="text-align: center; font-size: 1.2rem; line-height: 1.5; margin-top: 0; margin-bottom: 1rem;">Un service innovant pour votre entreprise</p>
-						<p>Vous faire <a href="#">rêver</a> à travers le <a href="#">digital </a>!</p>
+						
+						<p class="subtitle">Un service innovant pour votre entreprise</p>
+						<p class="tagline">Vous faire <a href="#">rêver</a> à travers le <a href="#">digital </a>!</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -268,6 +277,36 @@
 						navbar.classList.add("scrolled");
 					} else {
 						navbar.classList.remove("scrolled");
+					}
+				});
+
+				// Mobile Menu Toggle
+				document.addEventListener('DOMContentLoaded', function() {
+					const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+					const navbarMenu = document.getElementById('navbar-menu');
+					
+					if (mobileMenuToggle && navbarMenu) {
+						mobileMenuToggle.addEventListener('click', function() {
+							this.classList.toggle('active');
+							navbarMenu.classList.toggle('active');
+						});
+						
+						// Close menu when clicking on a link
+						const navLinks = navbarMenu.querySelectorAll('.nav-link');
+						navLinks.forEach(link => {
+							link.addEventListener('click', function() {
+								mobileMenuToggle.classList.remove('active');
+								navbarMenu.classList.remove('active');
+							});
+						});
+						
+						// Close menu when clicking outside
+						document.addEventListener('click', function(e) {
+							if (!mobileMenuToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+								mobileMenuToggle.classList.remove('active');
+								navbarMenu.classList.remove('active');
+							}
+						});
 					}
 				});
 			</script>

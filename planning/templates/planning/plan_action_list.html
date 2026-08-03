@@ -1,0 +1,343 @@
+{% extends 'index.html' %}
+{% load planning_filters %}
+
+{% block title %}
+Liste des Plans d'Actions Stratégiques (PAS)
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-5 text-success fw-bold animate-fade-in" style="font-size: 2.5rem; letter-spacing: 1px;">
+        Plans d'Actions Stratégiques (PAS)
+    </h1>
+
+    <!-- Liste des Plans d'Actions Stratégiques -->
+    <div id="plans-actions-list">
+        {% for plan in plans %}
+            <div class="card shadow-lg mb-4 border-0 rounded-4 animate-slide-up" style="animation-delay: {{ forloop.counter0|mul:0.1 }}s; background: linear-gradient(135deg, #f8f9fa, #e9ecef); max-width: 850px; margin-left: auto; margin-right: auto;">
+                <div class="card-header bg-success text-white d-flex align-items-center justify-content-between" style="border-radius: 15px 15px 0 0; padding: 12px 20px;">
+                    <h4 class="card-title mb-0 fw-bold" style="font-size: 1.4rem;">{{ plan.titre }}</h4>
+                    <span class="badge bg-warning text-dark fw-bold" style="font-size: 0.8rem;">{{ plan.reference }}</span>
+                </div>
+                <div class="card-body" style="padding: 20px;">
+                    <!-- Ligne 1 : Impact -->
+                    <div class="d-flex align-items-center text-dark mb-2 line-container">
+                        <div class="line-item full-width">
+                            <i class="bi bi-lightbulb text-dark me-1"></i>
+                            <span class="fw-bold">Impact :</span> 
+                            <span class="ms-1">{{ plan.impact|truncatewords:20 }}</span>
+                        </div>
+                    </div>
+                    <!-- Ligne 2 : Effets, Produits, Actions, Activités -->
+                    <div class="d-flex align-items-center text-dark mb-2 line-container" style="flex-wrap: wrap;">
+                        <div class="line-item">
+                            <i class="bi bi-bar-chart text-dark me-1"></i>
+                            <span class="fw-bold">Effets :</span> 
+                            <span class="ms-1">{{ plan.nombre_effets }}</span>
+                        </div>
+                        <div class="line-item">
+                            <i class="bi bi-boxes text-dark me-1"></i>
+                            <span class="fw-bold">Produits :</span> 
+                            <span class="ms-1">{{ plan.nombre_produits }}</span>
+                        </div>
+                        <div class="line-item">
+                            <i class="bi bi-gear text-dark me-1"></i>
+                            <span class="fw-bold">Actions :</span> 
+                            <span class="ms-1">{{ plan.nombre_actions }}</span>
+                        </div>
+                        <div class="line-item">
+                            <i class="bi bi-tools text-dark me-1"></i>
+                            <span class="fw-bold">Activités :</span> 
+                            <span class="ms-1">{{ plan.nombre_activites }}</span>
+                        </div>
+                    </div>
+                    <!-- Ligne 3 : Début, Horizon, Coût, Statut -->
+                    <div class="d-flex justify-content-between align-items-center text-dark mb-2 line-container">
+                        <div class="line-item">
+                            <i class="bi bi-calendar-check text-dark me-1"></i>
+                            <span class="fw-bold">Début :</span> 
+                            <span class="ms-1">{{ plan.annee_debut }}</span>
+                        </div>
+                        <div class="line-item">
+                            <i class="bi bi-calendar3 text-dark me-1"></i>
+                            <span class="fw-bold">Horizon :</span> 
+                            <span class="ms-1">{{ plan.horizon }} ans</span>
+                        </div>
+                        <div class="line-item">
+                            <span class="fw-bold">Coût (FCFA) :</span> 
+                            <span class="ms-1">
+                                {% with total_cost=plan.couts|sum_list %}
+                                    {{ total_cost|floatformat:0 }} M
+                                {% endwith %}
+                            </span>
+                        </div>
+                        <div class="line-item full-width">
+                            <i class="bi bi-link-45deg text-dark me-1"></i>
+                            <span class="fw-bold">Statut :</span> 
+                            <span class="ms-1">
+                                {% for i in plan.horizon|times %}
+                                    {% with year=plan.annee_debut|add:i statut=plan.statut_pao|index:i %}
+                                        <span class="chain-link {% if statut == 'En cours' %}active{% endif %}" title="{{ statut }} ({{ year }})">{{ year }}</span>
+                                        {% if not forloop.last %}<span class="chain-connector">-</span>{% endif %}
+                                    {% endwith %}
+                                {% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Boutons -->
+                    <div class="mt-3 text-center">
+                        <a href="{% url 'plan_action_detail' plan.id %}" class="btn btn-primary btn-sm me-1">
+                            <i class="bi bi-eye me-1"></i> Voir
+                        </a>
+                        <a href="{% url 'edit_plan_action' plan.id %}" class="btn btn-warning btn-sm me-1">
+                            <i class="bi bi-pencil me-1"></i> Éditer
+                        </a>
+                        <a href="{% url 'track_execution_list' plan.id %}" class="btn btn-info btn-sm">
+                            <i class="bi bi-graph-up me-1"></i> Suivi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="no-news text-center animate-fade-in">
+                <h1 class="text-warning">Aucun plan d'actions stratégiques !</h1>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Bouton d'ajout -->
+    <div class="text-center mt-5 animate-fade-in">
+        {% if is_member %}
+            <a href="{% url 'add_plan_action' %}" class="btn btn-success btn-lg d-inline-flex align-items-center">
+                <i class="bi bi-plus-circle me-2"></i> Ajouter un PAS
+            </a>
+        {% else %}
+            <a href="{% url 'add_plan_action' %}" class="btn btn-success btn-lg d-inline-flex align-items-center">
+                <i class="bi bi-plus-circle me-2"></i> Ajouter un PAS
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Modale pour inviter à se connecter -->
+<div class="modal fade" id="loginModal2" tabindex="-1" aria-labelledby="loginModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Accès restreint</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Vous devez être membre et connecté(e) pour ajouter un plan d'actions. Veuillez vous connecter ou vous inscrire.
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .no-news {
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #6c757d;
+    }
+    .text-warning {
+        color: #ff5722;
+        font-weight: bold;
+    }
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+    .card-header {
+        padding: 12px 20px;
+        border-bottom: none;
+        background: linear-gradient(90deg, #28a745, #218838); /* Vert dégradé */
+    }
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .fw-bold {
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 1rem;
+    }
+    .text-dark {
+        color: #2c3e50;
+        font-size: 1rem;
+    }
+    .line-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .line-container[style*="flex-wrap: wrap"] {
+        justify-content: flex-start; /* Alignement à gauche avec retour à la ligne */
+        gap: 20px; /* Espacement entre les éléments */
+    }
+    .line-item {
+        flex: 1; /* Espace égal pour chaque élément */
+        min-width: 120px; /* Largeur minimale pour éviter le chevauchement */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 10px; /* Marges gauche et droite équilibrées */
+        text-align: left;
+    }
+    .line-item.full-width {
+        max-width: 100%; /* Pour les lignes avec un seul élément */
+        text-align: left;
+        padding: 0 10px; /* Marges équilibrées */
+    }
+    .bi {
+        font-size: 1.2rem;
+        vertical-align: middle;
+    }
+    .text-purple { color: #6f42c1; }
+    .text-teal { color: #20c997; }
+    /* Style pour la chaîne de statut */
+    .chain-link {
+        display: inline-block;
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin: 0 1px;
+        transition: color 0.3s ease;
+    }
+    .chain-link.active {
+        color: #28a745;
+        font-weight: bold;
+    }
+    .chain-connector {
+        font-size: 0.7rem;
+        color: #6c757d;
+        margin: 0 1px;
+    }
+    .btn {
+        border-radius: 20px;
+        padding: 6px 15px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.85rem;
+    }
+    .btn-primary {
+        background: #007bff;
+        border: none;
+    }
+    .btn-primary:hover {
+        background: #0056b3;
+        transform: scale(1.05);
+    }
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+        border: none;
+    }
+    .btn-warning:hover {
+        background: #e0a800;
+        transform: scale(1.05);
+    }
+    .btn-info {
+        background: #17a2b8;
+        border: none;
+    }
+    .btn-info:hover {
+        background: #117a8b;
+        transform: scale(1.05);
+    }
+    .btn-success {
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 1.25rem;
+        font-weight: bold;
+        background: #28a745;
+        border: none;
+        transition: all 0.3s ease;
+    }
+    .btn-success:hover {
+        background: #218838;
+        transform: scale(1.05);
+    }
+    .btn-success .bi {
+        font-size: 1.5rem;
+    }
+    .btn-secondary {
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 1.25rem;
+        font-weight: bold;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+    .animate-fade-in {
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+    .animate-slide-up {
+        animation: slideUp 0.8s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+        .line-container {
+            flex-direction: column; /* Passe en colonne sur petits écrans */
+            text-align: center;
+        }
+        .line-container[style*="flex-wrap: wrap"] {
+            gap: 10px; /* Espacement réduit sur mobile */
+        }
+        .line-item {
+            max-width: 100%; /* Pleine largeur sur petits écrans */
+            margin-bottom: 10px;
+            text-align: center;
+            padding: 0; /* Pas de padding sur mobile pour maximiser l'espace */
+        }
+        .line-item.full-width {
+            text-align: center;
+            padding: 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+        }
+        .chain-link {
+            font-size: 0.7rem;
+        }
+        .chain-connector {
+            font-size: 0.6rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+{% endblock %}

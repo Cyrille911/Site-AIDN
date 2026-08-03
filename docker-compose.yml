@@ -3,6 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
+    command: python manage.py runserver 0.0.0.0:8000
     container_name: aidn-web
     restart: unless-stopped
     ports:
@@ -31,7 +32,45 @@ services:
       timeout: 5s
       retries: 5
 
+  redis:
+    image: redis:7-alpine
+    container_name: aidn-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+  celery_worker:
+    build: .
+    container_name: aidn-celery-worker
+    restart: unless-stopped
+    command: celery -A mysite worker -l info
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./staticfiles:/app/staticfiles
+      - media_volume:/app/media
+    depends_on:
+      - db
+      - redis
+
+  celery_beat:
+    build: .
+    container_name: aidn-celery-beat
+    restart: unless-stopped
+    command: celery -A mysite beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./staticfiles:/app/staticfiles
+      - media_volume:/app/media
+    depends_on:
+      - db
+      - redis
+
 volumes:
   postgres_data:
   static_volume:
   media_volume:
+  redis_data:

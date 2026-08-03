@@ -1,0 +1,798 @@
+{% extends "index.html" %}
+{% load planning_filters %}
+{% load static %}
+
+{% block title %}
+Matrice Opérationnelle - {{ plan.titre }} - {{ annee }}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-5 text-orange fw-bold animate-fade-in">Matrice Opérationnelle - {{ plan.titre }} - {{ annee }}</h2>
+
+    <!-- Filtres sur une seule ligne avec espacement uniforme -->
+    <div class="row my-3 g-3 mx-0 animate-slide-up justify-content-between">
+        {% for filter_group in filter_groups %}
+            <div class="col-12 col-md-2 filter-item">
+                <label class="mb-2 fw-bold text-orange">{{ filter_group.label }} :</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-orange dropdown-toggle w-100" type="button" data-group="{{ filter_group.group }}" data-bs-toggle="dropdown">
+                        Sélectionner les {{ filter_group.group }}s
+                    </button>
+                    <ul class="dropdown-menu w-100 overflow-auto" id="filter-{{ filter_group.group }}">
+                        <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="{{ filter_group.group }}" id="select-all-{{ filter_group.group }}"> Tout sélectionner</label></li>
+                        {% for item in filter_group.items %}
+                            <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="{{ filter_group.group }}" value="{{ item.titre }}">{{ item.titre }}</label></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Tableau -->
+    <div class="table-container mx-0 animate-slide-up" style="animation-delay: 0.4s;">
+        <div class="table-wrapper">
+            <div class="table-horizontal-container">
+                <table class="unfixed-table" id="matrix-table">
+                    <thead class="thead-dark">
+                        <tr id="table-header-top">
+                            <th rowspan="2" class="fixed-column">Référence</th>
+                            <th rowspan="2">Intitulé</th>
+                            <th rowspan="2">Nature d'activité</th>
+                            <th colspan="4">Indicateur</th>
+                            <th rowspan="2" class="sortable" data-sort="structure">Structure</th>
+                            <th rowspan="2" class="sortable" data-sort="etat_avancement">État d’avancement</th>
+                            <th rowspan="2">Commentaire</th>
+                            <th rowspan="2">Commentaire DPSE</th>
+                            <th rowspan="2" class="sortable" data-sort="status">Statut</th>
+                            <th rowspan="2">Programme</th>
+                            <th rowspan="2">Coût {{ annee }} (en millions)</th>
+                        </tr>
+                        <tr id="table-header-bottom">
+                            <th>Libellé</th>
+                            <th>Référence</th>
+                            <th>Cible {{ annee }}</th>
+                            <th>Réalisation {{ annee }}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matrix-table-body">
+                        <tr class="hierarchy-row impact-row">
+                            <td class="impact-bg" colspan="14">Impact : {{ impact }}</td>
+                        </tr>
+                        {% for effet in effets %}
+                            <tr class="hierarchy-row effet-row">
+                                <td class="effet-bg">Effet {{ forloop.counter }}</td>
+                                <td class="effet-bg" colspan="12">{{ effet.titre }}</td>
+                                <td class="effet-bg">{{ effet.cout }}</td>
+                            </tr>
+                            {% for produit in effet.produits %}
+                                <tr class="hierarchy-row produit-row">
+                                    <td class="produit-bg">Produit {{ forloop.parentloop.counter }}.{{ forloop.counter }}</td>
+                                    <td class="produit-bg" colspan="12">{{ produit.titre }}</td>
+                                    <td class="produit-bg">{{ produit.cout }}</td>
+                                </tr>
+                                {% for action in produit.actions %}
+                                    <tr class="hierarchy-row action-row">
+                                        <td class="action-bg">Action {{ forloop.parentloop.parentloop.counter }}.{{ forloop.parentloop.counter }}.{{ forloop.counter }}</td>
+                                        <td class="action-bg" colspan="12">{{ action.titre }}</td>
+                                        <td class="action-bg">{{ action.cout }}</td>
+                                    </tr>
+                                    {% for activite in action.activites %}
+                                        <tr class="activity-row">
+                                            <td class="activite-bg">Activité {{ forloop.parentloop.parentloop.parentloop.counter }}.{{ forloop.parentloop.parentloop.counter }}.{{ forloop.parentloop.counter }}.{{ forloop.counter }}</td>
+                                            <td class="activite-bg">{{ activite.titre }}</td>
+                                            <td class="activite-bg">{{ activite.type }}</td>
+                                            <td class="activite-bg">{{ activite.indicateur_label }}</td>
+                                            <td class="activite-bg">{{ activite.indicateur_reference }}</td>
+                                            <td class="activite-bg">{{ activite.cible }}</td>
+                                            <td class="activite-bg">{{ activite.realisation }}</td>
+                                            <td class="activite-bg">{{ activite.structure }}</td>
+                                            <td class="activite-bg">{{ activite.etat_avancement }}</td>
+                                            <td class="activite-bg">{{ activite.commentaire }}</td>
+                                            <td class="activite-bg">{{ activite.commentaire_se }}</td>
+                                            <td class="activite-bg">{{ activite.status }}</td>
+                                            <td class="activite-bg">{{ activite.programme }}</td>
+                                            <td class="activite-bg">{{ activite.cout }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tableau croisé Effet vs Nature avec totaux -->
+    <div class="stats-and-download-container mx-0 animate-fade-in">
+        <div class="stats-container">
+            <h3>Tableau Croisé Effet vs </h3>
+            <p>Lignes : <span id="visible-rows">0</span> visibles sur <span id="total-rows">0</span> totales</p>
+            <div class="table-responsive">
+                <table id="cross-table" class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Effet</th>
+                            <!-- Les colonnes "Nature" seront ajoutées dynamiquement -->
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cross-table-body"></tbody>
+                    <tfoot>
+                        <tr id="cross-table-footer">
+                            <th>Total</th>
+                            <!-- Les totaux par nature seront ajoutés dynamiquement -->
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="text-center mt-4 mb-4 animate-fade-in">
+        {% if pa_role == 'point_focal' or pa_role == 'responsable' or pa_role == 'participant' %}
+            <a href="{% url 'pao_list' plan.id %}" class="btn btn-orange btn-lg px-5 py-2 fw-bold me-3">Liste des PAO</a>
+        {% endif %}
+        {% if pa_role == 'suiveur_evaluateur' %}
+            <a href="{% url 'track_execution_list' plan.id %}" class="btn btn-orange btn-lg px-5 py-2 fw-bold me-3">Liste des PAO</a>
+        {% endif %}
+    </div>
+
+    <!-- Barre-loupe flottante -->
+    <div id="floating-search" class="floating-search-container">
+        <button id="toggle-search-btn" class="search-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="#ff6200"/>
+            </svg>
+        </button>
+        <div id="search-container" class="search-container">
+            <input type="text" id="search-input" class="form-control" placeholder="Rechercher..." aria-label="Rechercher">
+        </div>
+    </div>
+
+    <!-- Icône flottante de téléchargement -->
+    <div id="floating-download" class="floating-download-container animate-section" style="animation-delay: 1.2s;">
+        <button id="download-excel-btn" class="download-icon" title="Télécharger Excel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="#ff6200"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<!-- Inclusion de SheetJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const table = document.getElementById('matrix-table');
+    const tableBody = document.getElementById('matrix-table-body');
+    const searchInput = document.getElementById('search-input');
+    const toggleSearchBtn = document.getElementById('toggle-search-btn');
+    const searchContainer = document.getElementById('search-container');
+    const floatingSearch = document.getElementById('floating-search');
+    const tableContainer = document.querySelector('.table-horizontal-container');
+    const downloadBtn = document.getElementById('download-excel-btn');
+    const visibleRowsSpan = document.getElementById('visible-rows');
+    const totalRowsSpan = document.getElementById('total-rows');
+    const crossTable = document.getElementById('cross-table');
+    const crossTableBody = document.getElementById('cross-table-body');
+    const crossTableFooter = document.getElementById('cross-table-footer');
+
+    // Gestion des positions sticky pour les lignes hiérarchiques
+    function updateHierarchyPositions() {
+        const rows = Array.from(tableBody.getElementsByTagName('tr'));
+        const scrollTop = tableContainer.scrollTop;
+        const headerHeight = 76; // Hauteur totale des deux lignes d'en-tête
+
+        let topOffset = headerHeight;
+        rows.forEach((row, index) => {
+            if (row.classList.contains('hierarchy-row')) {
+                row.style.position = 'sticky';
+                row.style.top = `${topOffset}px`;
+                row.style.zIndex = 25 - index;
+                topOffset += row.offsetHeight;
+            }
+        });
+    }
+
+    // Filtrer avec regex
+    function filterTable() {
+        const searchTerm = searchInput.value.trim();
+        const rows = Array.from(tableBody.getElementsByTagName('tr'));
+        let regex;
+
+        try {
+            regex = searchTerm ? new RegExp(searchTerm, 'i') : null;
+        } catch (e) {
+            console.error("Expression régulière invalide :", e);
+            return;
+        }
+
+        rows.forEach(row => {
+            if (row.classList.contains('hierarchy-row')) {
+                row.style.display = '';
+            } else {
+                const rowText = Array.from(row.cells).map(cell => cell.textContent.trim()).join(' ');
+                row.style.display = regex && !regex.test(rowText) ? 'none' : '';
+            }
+        });
+        updateCrossTable();
+        updateHierarchyPositions();
+    }
+
+    // Mettre à jour le tableau croisé Effet vs Nature avec totaux
+    function updateCrossTable() {
+        const visibleRows = Array.from(tableBody.getElementsByTagName('tr')).filter(row => 
+            row.style.display !== 'none' && !row.classList.contains('hierarchy-row')
+        );
+        const totalRows = Array.from(tableBody.getElementsByTagName('tr')).filter(row => 
+            !row.classList.contains('hierarchy-row')
+        ).length;
+
+        visibleRowsSpan.textContent = visibleRows.length;
+        totalRowsSpan.textContent = totalRows;
+
+        // Collecter les effets et Natures uniques
+        const effets = new Set();
+        const types = new Set();
+        const crossData = {};
+
+        visibleRows.forEach(row => {
+            const effetMatch = row.cells[0].textContent.match(/^(\d+)\./); // Extraire le numéro de l'effet
+            const effet = effetMatch ? `Effet ${effetMatch[1]}` : 'Non défini';
+            const type = row.cells[2].textContent.trim(); // Colonne "Nature d'activité"
+
+            effets.add(effet);
+            types.add(type);
+
+            if (!crossData[effet]) crossData[effet] = {};
+            crossData[effet][type] = (crossData[effet][type] || 0) + 1;
+        });
+
+        const typeArray = Array.from(types);
+
+        // Mettre à jour l'en-tête du tableau croisé
+        crossTable.querySelector('thead tr').innerHTML = '<th>Effet</th>';
+        typeArray.forEach(type => {
+            crossTable.querySelector('thead tr').innerHTML += `<th>${type}</th>`;
+        });
+        crossTable.querySelector('thead tr').innerHTML += '<th>Total</th>';
+
+        // Mettre à jour le corps du tableau croisé
+        crossTableBody.innerHTML = '';
+        const effetArray = Array.from(effets).sort();
+        effetArray.forEach(effet => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${effet}</td>`;
+            let rowTotal = 0;
+            typeArray.forEach(type => {
+                const count = crossData[effet][type] || 0;
+                rowTotal += count;
+                tr.innerHTML += `<td>${count}</td>`;
+            });
+            tr.innerHTML += `<td>${rowTotal}</td>`;
+            crossTableBody.appendChild(tr);
+        });
+
+        // Mettre à jour le pied du tableau croisé (totaux par nature)
+        crossTableFooter.innerHTML = '<th>Total</th>';
+        let grandTotal = 0;
+        typeArray.forEach(type => {
+            let colTotal = 0;
+            effetArray.forEach(effet => {
+                colTotal += crossData[effet][type] || 0;
+            });
+            grandTotal += colTotal;
+            crossTableFooter.innerHTML += `<td>${colTotal}</td>`;
+        });
+        crossTableFooter.innerHTML += `<td>${grandTotal}</td>`;
+    }
+
+    // Tri des colonnes
+    document.querySelectorAll('.sortable').forEach(th => {
+        th.addEventListener('click', function () {
+            const column = this.dataset.sort;
+            const rows = Array.from(tableBody.getElementsByClassName('activity-row'));
+            const isAscending = this.classList.toggle('asc');
+
+            rows.sort((a, b) => {
+                const aValue = a.querySelector(`td:nth-child(${getColumnIndex(column)})`).textContent.trim();
+                const bValue = b.querySelector(`td:nth-child(${getColumnIndex(column)})`).textContent.trim();
+                return isAscending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+            });
+
+            rows.forEach(row => tableBody.appendChild(row));
+            updateCrossTable();
+            updateHierarchyPositions();
+        });
+    });
+
+    function getColumnIndex(column) {
+        const columnMap = { 'titre': 2, 'structure': 8, 'etat_avancement': 9, 'status': 12 };
+        return columnMap[column] || 1;
+    }
+
+    // Gestion barre de recherche
+    toggleSearchBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        searchContainer.classList.toggle('active');
+        if (searchContainer.classList.contains('active')) {
+            searchInput.focus();
+        } else {
+            searchInput.value = '';
+            filterTable();
+        }
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!floatingSearch.contains(e.target) && searchContainer.classList.contains('active')) {
+            searchContainer.classList.remove('active');
+            searchInput.value = '';
+            filterTable();
+        }
+    });
+
+    searchInput.addEventListener('input', filterTable);
+
+    // Télécharger Excel avec deux feuilles
+    downloadBtn.addEventListener('click', function () {
+        try {
+            const wb = XLSX.utils.book_new();
+
+            // ────────────────────────────────────────────────
+            // Feuille 1 : Matrice de Suivi (avec gestion rowspan/colspan)
+            // ────────────────────────────────────────────────
+            const ws_pao_data = [];
+            const merges = []; // Tableau pour stocker les fusions
+
+            // On va parser les deux lignes de header
+            const headerTop = document.querySelectorAll('#table-header-top th');
+            const headerBottom = document.querySelectorAll('#table-header-bottom th');
+
+            // On commence par créer une grille virtuelle pour les en-têtes (2 lignes minimum)
+            let col = 0;
+            let row = 0;
+
+            // Ligne 1 (top) ───────────────────────────────
+            Array.from(headerTop).forEach(th => {
+                const content = th.textContent.trim();
+                const rowspan = parseInt(th.getAttribute('rowspan') || '1', 10);
+                const colspan = parseInt(th.getAttribute('colspan') || '1', 10);
+
+                // Placer le texte dans la première cellule de la fusion
+                if (!ws_pao_data[row]) ws_pao_data[row] = [];
+                ws_pao_data[row][col] = content;
+
+                // Ajouter la fusion si besoin
+                if (rowspan > 1 || colspan > 1) {
+                    merges.push({
+                        s: { r: row, c: col },
+                        e: { r: row + rowspan - 1, c: col + colspan - 1 }
+                    });
+                }
+
+                col += colspan;
+            });
+
+            // Ligne 2 (bottom) ─────────────────────────────
+            row = 1;
+            col = 3;
+            Array.from(headerBottom).forEach(th => {
+                const content = th.textContent.trim();
+                const colspan = parseInt(th.getAttribute('colspan') || '1', 10);
+
+                if (!ws_pao_data[row]) ws_pao_data[row] = [];
+                // On saute les colonnes déjà occupées par rowspan de la ligne précédente
+                while (ws_pao_data[row][col] !== undefined) col++;
+
+                ws_pao_data[row][col] = content;
+
+                if (colspan > 1) {
+                    merges.push({
+                        s: { r: row, c: col },
+                        e: { r: row, c: col + colspan - 1 }
+                    });
+                }
+
+                col += colspan;
+            });
+
+            // Corps du tableau (lignes de données)
+            const visibleRows = Array.from(tableBody.querySelectorAll('tr')).filter(
+                row => row.style.display !== 'none'
+            );
+
+            visibleRows.forEach(tr => {
+                row++;
+                col = 0;
+                Array.from(tr.cells).forEach(td => {
+                    const content = td.textContent.trim();
+                    const rowspan = parseInt(td.getAttribute('rowspan') || '1', 10);
+                    const colspan = parseInt(td.getAttribute('colspan') || '1', 10);
+
+                    // Sauter les cellules déjà occupées par rowspan précédent
+                    while (ws_pao_data[row] && ws_pao_data[row][col] !== undefined) col++;
+
+                    if (!ws_pao_data[row]) ws_pao_data[row] = [];
+                    ws_pao_data[row][col] = content;
+
+                    if (rowspan > 1 || colspan > 1) {
+                        merges.push({
+                            s: { r: row, c: col },
+                            e: { r: row + rowspan - 1, c: col + colspan - 1 }
+                        });
+                    }
+
+                    col += colspan;
+                });
+            });
+
+            const ws_pao = XLSX.utils.aoa_to_sheet(ws_pao_data);
+            // Ajout des fusions !
+            ws_pao['!merges'] = merges;
+
+            XLSX.utils.book_append_sheet(wb, ws_pao, "Matrice de Suivi");
+
+            // ────────────────────────────────────────────────
+            // Feuille 2 : Stats (tableau croisé) – version simple
+            // ────────────────────────────────────────────────
+            const ws_stats_data = [];
+
+            // En-tête
+            const crossHeaderCells = crossTable.querySelector('thead tr').children;
+            ws_stats_data.push(
+                Array.from(crossHeaderCells).map(th => th.textContent.trim())
+            );
+
+            // Lignes
+            Array.from(crossTableBody.querySelectorAll('tr')).forEach(row => {
+                ws_stats_data.push(
+                    Array.from(row.cells).map(td => td.textContent.trim())
+                );
+            });
+
+            // Footer (si présent)
+            if (crossTableFooter && crossTableFooter.children.length > 0) {
+                ws_stats_data.push(
+                    Array.from(crossTableFooter.children).map(cell => cell.textContent.trim())
+                );
+            }
+
+            const ws_stats = XLSX.utils.aoa_to_sheet(ws_stats_data);
+            XLSX.utils.book_append_sheet(wb, ws_stats, "Stats");
+
+            // Téléchargement
+            const annee = "{{ annee }}"; // ou document.getElementById('...').value si dynamique
+            XLSX.writeFile(wb, `PAO_${annee}.xlsx`);
+
+        } catch (error) {
+            console.error('Erreur lors de la génération Excel :', error);
+            alert('Erreur lors du téléchargement du fichier Excel.');
+        }
+    });
+
+    // Gestion des filtres
+    function chargeTable(group) {
+        let params = new URLSearchParams();
+        const groups = ['effet', 'produit', 'action', 'type', 'structure'];
+        groups.forEach(g => {
+            const checkboxes = document.querySelectorAll(`input[data-group="${g}"]:checked`);
+            checkboxes.forEach(cb => {
+                if (!cb.id.startsWith('select-all-')) {
+                    params.append(g, cb.value);
+                }
+            });
+        });
+
+        fetch(`{% url 'operational_plan_matrix' plan.id annee %}?${params.toString()}`, { 
+            headers: { 'X-Requested-With': 'XMLHttpRequest' } 
+        })
+        .then(response => response.json())
+        .then(data => {
+            tableBody.innerHTML = `
+                <tr class="hierarchy-row impact-row">
+                    <td class="impact-bg" colspan="14">Impact : ${data.impact}</td>
+                </tr>
+            `;
+
+            let effetCounter = 1;
+            data.effets.forEach(effet => {
+                tableBody.innerHTML += `
+                    <tr class="hierarchy-row effet-row">
+                        <td class="effet-bg">Effet ${effetCounter}</td>
+                        <td class="effet-bg" colspan="12">${effet.titre}</td>
+                        <td class="effet-bg">${effet.cout}</td>
+                    </tr>
+                `;
+                effetCounter++;
+
+                let produitCounter = 1;
+                effet.produits.forEach(produit => {
+                    tableBody.innerHTML += `
+                        <tr class="hierarchy-row produit-row">
+                            <td class="produit-bg">Produit ${effetCounter - 1}.${produitCounter}</td>
+                            <td class="produit-bg" colspan="12">${produit.titre}</td>
+                            <td class="produit-bg">${produit.cout}</td>
+                        </tr>
+                    `;
+                    produitCounter++;
+
+                    let actionCounter = 1;
+                    produit.actions.forEach(action => {
+                        tableBody.innerHTML += `
+                            <tr class="hierarchy-row action-row">
+                                <td class="action-bg">Action ${effetCounter - 1}.${produitCounter - 1}.${actionCounter}</td>
+                                <td class="action-bg" colspan="12">${action.titre}</td>
+                                <td class="action-bg">${action.cout}</td>
+                            </tr>
+                        `;
+                        actionCounter++;
+
+                        let activiteCounter = 1;
+                        action.activites.forEach(activite => {
+                            tableBody.innerHTML += `
+                                <tr class="activity-row">
+                                    <td class="activite-bg">${effetCounter - 1}.${produitCounter - 1}.${actionCounter - 1}.${activiteCounter}</td>
+                                    <td class="activite-bg">${activite.titre}</td>
+                                    <td class="activite-bg">${activite.type}</td>
+                                    <td class="activite-bg">${activite.indicateur_label}</td>
+                                    <td class="activite-bg">${activite.indicateur_reference}</td>
+                                    <td class="activite-bg">${activite.cible}</td>
+                                    <td class="activite-bg">${activite.realisation}</td>
+                                    <td class="activite-bg">${activite.structure}</td>
+                                    <td class="activite-bg">${activite.etat_avancement}</td>
+                                    <td class="activite-bg">${activite.commentaire}</td>
+                                    <td class="activite-bg">${activite.commentaire_se}</td>
+                                    <td class="activite-bg">${activite.status}</td>
+                                    <td class="activite-bg">${activite.programme}</td>
+                                    <td class="activite-bg">${activite.cout}</td>
+                                </tr>
+                            `;
+                            activiteCounter++;
+                        });
+                    });
+                });
+            });
+
+            if (data.effets.length === 0) {
+                tableBody.innerHTML += `<tr><td colspan="14" class="text-center">Aucune donnée trouvée</td></tr>`;
+            }
+
+            filterTable();
+        })
+        .catch(error => {
+            console.error('Erreur AJAX:', error);
+            tableBody.innerHTML = `<tr><td colspan="14" class="text-center">Erreur de chargement</td></tr>`;
+            updateCrossTable();
+            updateHierarchyPositions();
+        });
+    }
+
+    // Gestion des filtres avec checkboxes
+    ['effet', 'produit', 'action', 'type', 'structure'].forEach(group => {
+        const checkboxes = document.querySelectorAll(`input[data-group="${group}"]`);
+        const selectAllCheckbox = document.querySelector(`#select-all-${group}`);
+        const button = document.querySelector(`button[data-group="${group}"]`);
+
+        function updateButton() {
+            const selected = Array.from(checkboxes)
+                .filter(cb => cb.checked && cb !== selectAllCheckbox)
+                .map(cb => cb.value);
+            button.textContent = selected.length > 0 ? selected.join(', ') : `Sélectionner les ${group}s`;
+        }
+
+        selectAllCheckbox.addEventListener('change', function () {
+            checkboxes.forEach(cb => cb.checked = this.checked);
+            updateButton();
+            chargeTable(group);
+        });
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', function () {
+                if (this !== selectAllCheckbox) {
+                    selectAllCheckbox.checked = Array.from(checkboxes).every(c => c.checked || c === selectAllCheckbox);
+                }
+                updateButton();
+                chargeTable(group);
+            });
+        });
+
+        checkboxes.forEach(cb => cb.checked = true);
+        updateButton();
+    });
+
+    // Initialisation
+    updateCrossTable();
+    updateHierarchyPositions();
+    tableContainer.addEventListener('scroll', updateHierarchyPositions);
+});
+</script>
+{% endblock %}
+
+{% block style %}
+<style>
+    .text-orange { color: #ff6200 !important; }
+    .bg-orange { background: #ff6200 !important; }
+    .fw-bold { font-weight: bold; }
+
+    .container { padding-left: 75px; padding-right: 75px; width: 100%; max-width: none; }
+
+    .dropdown-menu { 
+        max-height: 250px; 
+        overflow-y: auto; 
+        z-index: 40; /* Augmente le z-index pour être au-dessus du tableau */
+    }
+    .checkbox-option { margin-right: 10px; }
+    .btn-outline-orange { 
+        border-color: #ff6200; 
+        color: #ff6200; 
+        padding: 10px; 
+        white-space: normal; 
+        display: -webkit-box; 
+        -webkit-line-clamp: 2; 
+        -webkit-box-orient: vertical; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        max-height: 4.5em; 
+        line-height: 1.5em; 
+    }
+    .btn-outline-orange:hover { 
+        background-color: #ff6200; 
+        color: white; 
+    }
+
+    /* Espacement uniforme des filtres */
+    .filter-item { 
+        padding: 0 10px; 
+        display: flex; 
+        flex-direction: column; 
+        position: relative; /* Assure que les dropdowns restent dans le flux */
+    }
+    .row.justify-content-between { 
+        margin-left: -10px; 
+        margin-right: -10px; 
+    }
+
+    .table-container { 
+        border-radius: 15px; 
+        overflow: hidden; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+        background: #fff; 
+        margin: 40px 0; 
+        padding: 20px; 
+        max-height: 800px; 
+        border: 5px solid #ff6200; 
+        position: relative; 
+        z-index: 10; /* z-index inférieur aux dropdowns */
+    }
+    .table-wrapper { 
+        position: relative; 
+        height: 100%; 
+        width: 100%; 
+        overflow: hidden; 
+    }
+    .table-horizontal-container { 
+        max-height: 760px; 
+        overflow: auto; 
+        border: 0.5px solid #000; 
+        border-radius: 5px; 
+        z-index: 10; /* z-index inférieur aux dropdowns */
+    }
+    .unfixed-table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        border: 0.5px solid #000 !important; 
+    }
+    th, td { 
+        border: 0.5px solid #000 !important; 
+        padding: 10px; 
+        min-width: 150px; 
+        text-align: left; 
+    }
+
+    thead th { 
+        position: sticky; 
+        top: 0; 
+        z-index: 30; /* z-index pour les en-têtes sticky, inférieur aux dropdowns */
+        background: #ff6200 !important; 
+        color: white !important; 
+        text-align: center; 
+    }
+    #table-header-bottom th { 
+        position: sticky; 
+        top: 38px; 
+        z-index: 29; /* z-index inférieur aux dropdowns */
+        background: #ff6200 !important; 
+        color: white !important; 
+    }
+    .fixed-column:nth-child(1) { 
+        position: sticky; 
+        left: 0; 
+        z-index: 35; /* z-index pour colonnes fixes, inférieur aux dropdowns */
+        background: #ff6200 !important; 
+        color: white !important; 
+    }
+    tr > td:first-child { 
+        position: sticky; 
+        left: 0; 
+        z-index: 15; 
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1); 
+    }
+    tbody tr > td { 
+        background-color: inherit; 
+    }
+
+    .impact-bg { background-color: #d1e7dd; }
+    .effet-bg { background-color: #f8d7da; }
+    .produit-bg { background-color: #fff3cd; }
+    .action-bg { background-color: #cce5ff; }
+    .activite-bg { background-color: #ffffff; }
+
+    .hierarchy-row { font-weight: bold; }
+    .sortable { cursor: pointer; }
+    .sortable.asc::after { content: ' ↑'; }
+    .sortable:not(.asc)::after { content: ' ↓'; }
+
+    .stats-and-download-container { 
+        padding: 20px; 
+        background: #f9f9f9; 
+        border-radius: 10px; 
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); 
+    }
+    .stats-container h3 { font-size: 18px; margin-bottom: 10px; text-align: center; }
+    .stats-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .stats-table th, .stats-table td { border: 1px solid #ccc; padding: 8px; text-align: center; background: white; }
+    .stats-table th { background: #e0e0e0; font-weight: bold; }
+    .stats-table tfoot th, .stats-table tfoot td { background: #d0d0d0; font-weight: bold; }
+    .table-responsive { max-height: 300px; overflow-y: auto; }
+
+    .btn-orange { background: #ff6200; color: white; border: none; border-radius: 25px; padding: 6px 15px; }
+    .btn:hover { opacity: 0.9; transform: scale(1.05); transition: all 0.3s ease; }
+
+    .floating-search-container { 
+        position: fixed; 
+        z-index: 1000; 
+        display: flex; 
+        align-items: center; 
+        background: rgba(255, 255, 255, 0.5); 
+        border-radius: 25px; 
+        padding: 5px; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+        top: 85px; 
+        left: 85px; 
+    }
+    .search-icon { background: none; border: none; padding: 5px; cursor: pointer; transition: transform 0.2s ease; }
+    .search-icon:hover { transform: scale(1.1); }
+    .search-container { max-width: 0; overflow: hidden; transition: max-width 0.3s ease-in-out; margin-left: 5px; }
+    .search-container.active { max-width: 200px; }
+    #search-input { border: 2px solid #ff6200; border-radius: 5px; padding: 5px 10px; font-size: 16px; width: 100%; }
+    #search-input:focus { outline: none; border-color: #ff6200; box-shadow: 0 0 5px rgba(255, 98, 0, 0.5); }
+
+    .floating-download-container {
+        position: fixed; 
+        z-index: 1000; 
+        top: 85px; 
+        right: 35px;
+    }
+    .download-icon {
+        background: none; 
+        border: none; 
+        padding: 10px; 
+        cursor: pointer; 
+        opacity: 0.5;
+        transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+    .download-icon:hover {
+        opacity: 1; 
+        transform: scale(1.1);
+    }
+
+    .animate-fade-in { animation: fadeIn 1s ease-in-out forwards; }
+    .animate-slide-up { animation: slideUp 0.8s ease-in-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+{% endblock %}

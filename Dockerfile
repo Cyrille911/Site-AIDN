@@ -11,6 +11,8 @@ WORKDIR /app
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
+    default-libmysqlclient-dev \
+    pkg-config \
     gcc \
     netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*

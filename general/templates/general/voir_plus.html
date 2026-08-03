@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AIDN - Voir plus</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'general/assets/css/main.css' %}?v=2026031101" />
+		<noscript><link rel="stylesheet" href="{% static 'general/assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Modern Transparent Navbar -->
+		<nav class="modern-navbar">
+			<div class="navbar-container">
+				<div class="navbar-logo">
+					<a href="{% url 'accueil' %}">
+						<span class="logo-icon">◆</span>
+						<span class="logo-text">AIDN</span>
+					</a>
+				</div>
+				<button class="mobile-menu-toggle" id="mobile-menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<ul class="navbar-menu" id="navbar-menu">
+					<li><a href="{% url 'accueil' %}" class="nav-link">Accueil</a></li>
+					<li><a href="{% url 'accueil' %}#metiers" class="nav-link">Nos métiers</a></li>
+					<li><a href="{% url 'nos_produits' %}" class="nav-link">Nos produits</a></li>
+					<li><a href="{% url 'portfolio' %}" class="nav-link">Portfolio</a></li>
+					<li><a href="{% url 'a_propos' %}" class="nav-link">À propos</a></li>
+					<li><a href="{% url 'nous_joindre' %}" class="nav-link">Nous joindre</a></li>
+				</ul>
+				<div class="navbar-right">
+					<div class="language-selector"></div>
+					<a href="#footer" class="contact-btn">Contact</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Background video -->
+					<video autoplay muted loop playsinline id="bg-video">
+						<source src="{% static 'general/videos/bg.mp4' %}" type="video/mp4">
+					</video>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">AIDN</a>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>L'intelligence Numerique<br />
+									Au Service De La Transformation</h1>
+									<p>AIDN accompagne les entreprises et les administrations dans leur<br />
+									transformation digitale grace a des solutions innovantes et sur mesure.</p>
+								</header>
+								<p>Dans un monde en constante evolution, la transformation numerique n'est plus une option, c'est une necessite. Les organisations qui embrassent le digital gagnent en efficacite, en competitivite et en capacite d'innovation. Chez <b>AIDN</b> (Agence Ivoirienne de Developpement Numerique), nous croyons que la technologie doit etre un levier de croissance accessible a tous.</p>
+								<p>Notre approche repose sur trois piliers fondamentaux :</p>
+								<ul>
+									<li><b>L'ecoute</b> : Comprendre vos besoins reels, vos contraintes et vos ambitions pour concevoir des solutions qui vous ressemblent.</li>
+									<li><b>L'expertise</b> : Mobiliser nos competences en developpement web, data science, cybersecurite, IoT et infographie pour delivrer des solutions robustes.</li>
+									<li><b>L'accompagnement</b> : Vous guider a chaque etape, de la conception au deploiement, et assurer un suivi post-livraison pour garantir la perennite de vos solutions.</li>
+								</ul>
+								<p>Que vous soyez une administration publique cherchant a digitaliser ses processus, une entreprise privee souhaitant optimiser sa gestion, ou une organisation en quete d'outils de pilotage performants, AIDN dispose des competences et de l'experience pour repondre a vos attentes.</p>
+								<p>Nos equipes, composees d'ingenieurs et de consultants formes dans les meilleures ecoles, allient rigueur technique et creativite pour transformer vos idees en solutions concretes. Chaque projet est pour nous une opportunite de repousser les limites de l'innovation au service de votre reussite.</p>
+
+								<hr />
+
+								<h2>Nos engagements</h2>
+								<div class="row">
+									<div class="col-6 col-12-small">
+										<h3>Qualite</h3>
+										<p>Des solutions testees, securisees et conformes aux standards internationaux.</p>
+										<h3>Delais</h3>
+										<p>Un respect strict des calendriers de livraison avec une communication transparente.</p>
+									</div>
+									<div class="col-6 col-12-small">
+										<h3>Innovation</h3>
+										<p>L'utilisation des technologies les plus recentes pour vous donner un avantage competitif.</p>
+										<h3>Support</h3>
+										<p>Un accompagnement continu apres la livraison pour assurer le bon fonctionnement de vos solutions.</p>
+									</div>
+								</div>
+
+								<hr />
+
+								<blockquote>Vous faire rever a travers le digital - c'est notre promesse. Ensemble, construisons les solutions numeriques de demain.</blockquote>
+
+								<ul class="actions special">
+									<li><a href="{% url 'nos_produits' %}" class="button primary large">Decouvrir nos produits</a></li>
+									<li><a href="{% url 'nous_joindre' %}" class="button large">Nous contacter</a></li>
+								</ul>
+							</section>
+
+					</div>
+
+					<section style="padding-top: 15px; background-color: rgba(255, 255, 255, 0)"></section>
+				
+					<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="{% url 'contact_email' %}">
+								{% csrf_token %}
+								<div class="fields">
+									<div class="field">
+										<label for="name">Nom</label>
+										<input type="text" name="name" id="name" required />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" required />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3" required></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Envoyer" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Adresse</h3>
+								<p>Côte d'Ivoire<br />Abidjan, Cocody</p>
+							</section>
+							<section>
+								<h3>Téléphone</h3>
+								<p><a href="#">+ 225 05 56 02 51 30</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">aidn.tech@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Réseaux Sociaux</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Copyright AIDN 2026</li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'general/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/util.js' %}"></script>
+			<script src="{% static 'general/assets/js/main.js' %}"></script>
+			<script>
+				(function() {
+					let lastScrollY = 0;
+					window.addEventListener("scroll", function() {
+						const navbar = document.querySelector(".modern-navbar");
+						if (!navbar) return;
+						if (window.scrollY > 50) { navbar.classList.add("scrolled"); }
+						else { navbar.classList.remove("scrolled"); }
+						if (window.scrollY > lastScrollY && window.scrollY > 100) { navbar.classList.add("navbar-hidden"); }
+						else { navbar.classList.remove("navbar-hidden"); }
+						lastScrollY = window.scrollY;
+					});
+				})();
+				document.addEventListener('DOMContentLoaded', function() {
+					const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+					const navbarMenu = document.getElementById('navbar-menu');
+					if (mobileMenuToggle && navbarMenu) {
+						mobileMenuToggle.addEventListener('click', function() {
+							this.classList.toggle('active');
+							navbarMenu.classList.toggle('active');
+						});
+						navbarMenu.querySelectorAll('.nav-link').forEach(link => {
+							link.addEventListener('click', function() {
+								mobileMenuToggle.classList.remove('active');
+								navbarMenu.classList.remove('active');
+							});
+						});
+						document.addEventListener('click', function(e) {
+							if (!mobileMenuToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+								mobileMenuToggle.classList.remove('active');
+								navbarMenu.classList.remove('active');
+							}
+						});
+					}
+				});
+			</script>
+	</body>
+</html>

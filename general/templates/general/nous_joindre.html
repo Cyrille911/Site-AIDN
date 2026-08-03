@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AIDN - Nous joindre</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'general/assets/css/main.css' %}?v=2026031101" />
+		<noscript><link rel="stylesheet" href="{% static 'general/assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Modern Transparent Navbar -->
+		<nav class="modern-navbar">
+			<div class="navbar-container">
+				<div class="navbar-logo">
+					<a href="{% url 'accueil' %}">
+						<span class="logo-icon">◆</span>
+						<span class="logo-text">AIDN</span>
+					</a>
+				</div>
+				<button class="mobile-menu-toggle" id="mobile-menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<ul class="navbar-menu" id="navbar-menu">
+					<li><a href="{% url 'accueil' %}" class="nav-link">Accueil</a></li>
+					<li><a href="{% url 'accueil' %}#metiers" class="nav-link">Nos métiers</a></li>
+					<li><a href="{% url 'nos_produits' %}" class="nav-link">Nos produits</a></li>
+					<li><a href="{% url 'portfolio' %}" class="nav-link">Portfolio</a></li>
+					<li><a href="{% url 'a_propos' %}" class="nav-link">À propos</a></li>
+					<li><a href="{% url 'nous_joindre' %}" class="nav-link active">Nous joindre</a></li>
+				</ul>
+				<div class="navbar-right">
+					<div class="language-selector"></div>
+					<a href="#footer" class="contact-btn">Contact</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Background video -->
+					<video autoplay muted loop playsinline id="bg-video">
+						<source src="{% static 'general/videos/bg.mp4' %}" type="video/mp4">
+					</video>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">AIDN</a>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Nous joindre</h1>
+									<p>Vous avez un projet, une question ou souhaitez en savoir plus sur nos services ?<br />
+									N'hesitez pas a nous contacter. Notre equipe est a votre ecoute.</p>
+								</header>
+
+								<!-- Coordonnées -->
+									<h2>Nos coordonnees</h2>
+									<div class="row">
+										<div class="col-6 col-12-small">
+											<h3>Adresse</h3>
+											<p>Abidjan, Cocody<br />
+											Cote d'Ivoire</p>
+
+											<h3>Telephone</h3>
+											<p><a href="tel:+2250556025130">+ 225 05 56 02 51 30</a></p>
+
+											<h3>Email</h3>
+											<p><a href="mailto:aidn.tech@gmail.com">aidn.tech@gmail.com</a></p>
+										</div>
+										<div class="col-6 col-12-small">
+											<h3>Horaires d'ouverture</h3>
+											<ul>
+												<li><b>Lundi - Vendredi</b> : 08h00 - 18h00</li>
+												<li><b>Samedi</b> : 09h00 - 13h00</li>
+												<li><b>Dimanche</b> : Ferme</li>
+											</ul>
+
+											<h3>Suivez-nous</h3>
+											<ul class="icons">
+												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+											</ul>
+										</div>
+									</div>
+
+									<hr />
+
+								<!-- Formulaire de contact -->
+									<h2>Envoyez-nous un message</h2>
+									<p>Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
+
+									<form method="post" action="{% url 'contact_email' %}">
+										{% csrf_token %}
+										<div class="row gtr-uniform">
+											<div class="col-6 col-12-xsmall">
+												<input type="text" name="name" id="contact-name" value="" placeholder="Votre nom" required />
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<input type="email" name="email" id="contact-email" value="" placeholder="Votre email" required />
+											</div>
+											<!-- Break -->
+											<div class="col-12">
+												<select name="subject" id="contact-subject">
+													<option value="">- Objet de votre demande -</option>
+													<option value="devis">Demande de devis</option>
+													<option value="information">Demande d'information</option>
+													<option value="partenariat">Proposition de partenariat</option>
+													<option value="recrutement">Candidature / Recrutement</option>
+													<option value="autre">Autre</option>
+												</select>
+											</div>
+											<!-- Break -->
+											<div class="col-12">
+												<textarea name="message" id="contact-message" placeholder="Votre message" rows="6" required></textarea>
+											</div>
+											<!-- Break -->
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" value="Envoyer le message" class="primary" /></li>
+													<li><input type="reset" value="Effacer" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+
+									<hr />
+
+								<!-- FAQ -->
+									<h2>Questions frequentes</h2>
+									<dl>
+										<dt>Comment demander un devis ?</dt>
+										<dd>
+											<p>Vous pouvez nous envoyer un message via le formulaire ci-dessus en selectionnant "Demande de devis" comme objet. Decrivez votre projet et nous vous repondrons avec une proposition personnalisee sous 48 heures.</p>
+										</dd>
+										<dt>Quels types de projets acceptez-vous ?</dt>
+										<dd>
+											<p>Nous intervenons sur des projets de toutes tailles : sites web, applications metiers, plateformes de gestion, solutions de Business Intelligence, projets IoT, identites graphiques et bien plus encore.</p>
+										</dd>
+										<dt>Travaillez-vous avec des clients hors de Cote d'Ivoire ?</dt>
+										<dd>
+											<p>Oui, nous accompagnons des clients dans toute l'Afrique de l'Ouest et au-dela. Nos equipes sont habituees a travailler a distance et peuvent s'adapter a vos contraintes geographiques.</p>
+										</dd>
+									</dl>
+
+									<hr />
+
+									<div class="box">
+										<p><b>Besoin d'une reponse rapide ?</b> Appelez-nous directement au <a href="tel:+2250556025130">+ 225 05 56 02 51 30</a> ou envoyez un email a <a href="mailto:aidn.tech@gmail.com">aidn.tech@gmail.com</a>. Nous nous engageons a repondre a toutes les demandes sous 24 a 48 heures ouvrables.</p>
+									</div>
+
+							</section>
+
+					</div>
+
+					<section style="padding-top: 15px; background-color: rgba(255, 255, 255, 0)"></section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="{% url 'contact_email' %}">
+								{% csrf_token %}
+								<div class="fields">
+									<div class="field">
+										<label for="name">Nom</label>
+										<input type="text" name="name" id="name" required />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" required />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3" required></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Envoyer" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Adresse</h3>
+								<p>Côte d'Ivoire<br />Abidjan, Cocody</p>
+							</section>
+							<section>
+								<h3>Téléphone</h3>
+								<p><a href="#">+ 225 05 56 02 51 30</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">aidn.tech@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Réseaux Sociaux</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Copyright AIDN 2026</li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'general/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'general/assets/js/util.js' %}"></script>
+			<script src="{% static 'general/assets/js/main.js' %}"></script>
+			<script>
+				(function() {
+					let lastScrollY = 0;
+					window.addEventListener("scroll", function() {
+						const navbar = document.querySelector(".modern-navbar");
+						if (!navbar) return;
+						if (window.scrollY > 50) { navbar.classList.add("scrolled"); }
+						else { navbar.classList.remove("scrolled"); }
+						if (window.scrollY > lastScrollY && window.scrollY > 100) { navbar.classList.add("navbar-hidden"); }
+						else { navbar.classList.remove("navbar-hidden"); }
+						lastScrollY = window.scrollY;
+					});
+				})();
+				document.addEventListener('DOMContentLoaded', function() {
+					const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+					const navbarMenu = document.getElementById('navbar-menu');
+					if (mobileMenuToggle && navbarMenu) {
+						mobileMenuToggle.addEventListener('click', function() {
+							this.classList.toggle('active');
+							navbarMenu.classList.toggle('active');
+						});
+						navbarMenu.querySelectorAll('.nav-link').forEach(link => {
+							link.addEventListener('click', function() {
+								mobileMenuToggle.classList.remove('active');
+								navbarMenu.classList.remove('active');
+							});
+						});
+						document.addEventListener('click', function(e) {
+							if (!mobileMenuToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+								mobileMenuToggle.classList.remove('active');
+								navbarMenu.classList.remove('active');
+							}
+						});
+					}
+				});
+			</script>
+	</body>
+</html>

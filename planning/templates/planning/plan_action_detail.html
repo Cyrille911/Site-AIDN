@@ -1,0 +1,1076 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="container mt-4 animate-container">
+        <h2 class="text-center animate-title">{{ plan.titre }}</h2>
+        
+        <!-- Filtres -->
+        <div class="row my-3 g-3 mx-0 animate-section" style="animation-delay: 0.2s;">
+            <div class="col-12 col-sm-6 col-md-4">
+                <label class="mb-2">Filtrer par effet :</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-group="effet" data-bs-toggle="dropdown">
+                        Sélectionner les effets
+                    </button>
+                    <ul class="dropdown-menu w-100 overflow-auto" id="filter-effet">
+                        <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="effet" id="select-all-effet"> Tout sélectionner</label></li>
+                        {% for effet in effets %}
+                            <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="effet" value="{{ effet.titre }}">{{ effet.titre }}</label></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <label class="mb-2">Filtrer par produit :</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-group="produit" data-bs-toggle="dropdown">
+                        Sélectionner les produits
+                    </button>
+                    <ul class="dropdown-menu w-100 overflow-auto" id="filter-produit">
+                        <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="produit" id="select-all-produit"> Tout sélectionner</label></li>
+                        {% for produit in produits %}
+                            <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="produit" value="{{ produit.titre }}">{{ produit.titre }}</label></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <label class="mb-2">Filtrer par action :</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-group="action" data-bs-toggle="dropdown">
+                        Sélectionner les actions
+                    </button>
+                    <ul class="dropdown-menu w-100 overflow-auto" id="filter-action">
+                        <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="action" id="select-all-action"> Tout sélectionner</label></li>
+                        {% for action in actions %}
+                            <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="action" value="{{ action.titre }}">{{ action.titre }}</label></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <label class="mb-2">Filtrer par nature d'activité :</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-group="type" data-bs-toggle="dropdown">
+                        Sélectionner les natures
+                    </button>
+                    <ul class="dropdown-menu w-100 overflow-auto" id="filter-type">
+                        <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="type" id="select-all-type"> Tout sélectionner</label></li>
+                        {% for type in types %}
+                            <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="type" value="{{ type }}">{{ type }}</label></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <label class="mb-2">Filtrer par structure :</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-group="structure" data-bs-toggle="dropdown">
+                        Sélectionner les structures
+                    </button>
+                    <ul class="dropdown-menu w-100 overflow-auto" id="filter-structure">
+                        <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="structure" id="select-all-structure"> Tout sélectionner</label></li>
+                        {% for structure in structures %}
+                            <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="structure" value="{{ structure }}">{{ structure }}</label></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <label class="mb-2">Filtrer par année :</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-group="annee" data-bs-toggle="dropdown">
+                        Sélectionner les années
+                    </button>
+                    <ul class="dropdown-menu w-100 overflow-auto" id="filter-annee">
+                        <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="annee" id="select-all-annee"> Tout sélectionner</label></li>
+                        {% for annee in annees %}
+                            <li><label class="dropdown-item"><input type="checkbox" class="checkbox-option" data-group="annee" value="{{ annee }}">{{ annee }}</label></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container mx-0 animate-section" style="animation-delay: 0.4s;">
+            <div class="table-wrapper">
+                <div class="table-scroll-container">
+                    <table class="unfixed-table" id="plan-table">
+                        <thead class="thead-dark">
+                            <tr id="table-header-top">
+                                <th rowspan="2" class="fixed-column">Référence</th>
+                                <th rowspan="2">Intitulé</th>
+                                <th rowspan="2">Nature d'activité</th>
+                                <th colspan="{{ annees|length|add:2 }}">Indicateur</th>
+                                <th rowspan="2">Structure Responsable</th>
+                                <th rowspan="2">Programme</th>
+                                <th colspan="{{ annees|length }}">Coûts par année (en millions)</th>
+                                <th rowspan="2">Coût Total (en millions)</th>
+                            </tr>
+                            <tr id="table-header-bottom">
+                                <th>Libellé</th>
+                                <th>Référence</th>
+                                {% for annee in annees %}
+                                    <th>Cibles {{ annee }}</th>
+                                {% endfor %}
+                                {% for annee in annees %}
+                                    <th>{{ annee }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody id="plan-table-body">
+                            <!-- Le contenu sera chargé dynamiquement via AJAX -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tableau croisé : Nombre d'activités par effet et par nature -->
+        <div class="crosstab-container mx-0 animate-section" style="animation-delay: 0.6s;">
+            <h3>Nombre d'activités par effet et par nature</h3>
+            <div class="crosstab-wrapper">
+                <table id="crosstab-table" class="crosstab-table">
+                    <thead id="crosstab-header"></thead>
+                    <tbody id="crosstab-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Boutons -->
+        <div class="text-center mt-4 mb-4 animate-section" style="animation-delay: 0.8s;">
+            {% if request.user.is_authenticated and pa_role %}
+                {% if pa_role == "point_focal" or pa_role == "responsable" %}
+                    <a href="{% url 'pao_list' plan.id %}" class="btn btn-lg me-3" style="background-color: #ff6200; color: white;">
+                        Modifier mes activités
+                    </a>
+                {% endif %}
+                
+                {% if pa_role == "suiveur_evaluateur" %}
+                    <a href="{% url 'track_execution_list' plan.id %}" class="btn btn-lg me-3" style="background-color: #28a745; color: white;">
+                        Suivre l'exécution
+                    </a>
+                {% endif %}
+
+                {% if pa_role == "participant" %}
+                    <a href="{% url 'pao_list' plan.id %}" class="btn btn-lg me-3" style="background-color: #ff6200; color: white;">
+                        Consulter les activités
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <!-- Barre-loupe flottante fixe -->
+        <div id="floating-search" class="floating-search-container animate-section" style="animation-delay: 1.0s;">
+            <button id="toggle-search-btn" class="search-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="orange"/>
+                </svg>
+            </button>
+            <div id="search-container" class="search-container">
+                <input type="text" id="search-input" class="form-control" placeholder="Rechercher..." aria-label="Rechercher">
+            </div>
+        </div>
+
+        <!-- Icône flottante de téléchargement -->
+        <div id="floating-download" class="floating-download-container animate-section" style="animation-delay: 1.2s;">
+            <button id="download-excel-btn" class="download-icon" title="Télécharger Excel">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="#007A3D"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Inclusion de SheetJS pour Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const table = document.getElementById('plan-table');
+            const tableHeaderTop = document.getElementById('table-header-top');
+            const tableHeaderBottom = document.getElementById('table-header-bottom');
+            const tableBody = document.getElementById('plan-table-body');
+            const searchInput = document.getElementById('search-input');
+            const toggleSearchBtn = document.getElementById('toggle-search-btn');
+            const searchContainer = document.getElementById('search-container');
+            const floatingSearch = document.getElementById('floating-search');
+            const downloadBtn = document.getElementById('download-excel-btn');
+            const tableContainer = document.querySelector('.table-scroll-container');
+            const crosstabHeader = document.getElementById('crosstab-header');
+            const crosstabBody = document.getElementById('crosstab-body');
+
+            const planImpact = "{{ plan.impact | escapejs }}";
+
+            function updateHierarchyPositions() {
+                const rows = Array.from(tableBody.getElementsByTagName('tr'));
+                const scrollTop = tableContainer.scrollTop;
+                const headerHeight = 76; // Hauteur totale des deux lignes d'en-tête
+
+                let topOffset = headerHeight; // Décalage initial après l'en-tête
+
+                rows.forEach((row, index) => {
+                    const firstCell = row.querySelector('td:first-child');
+                    if (!firstCell) return;
+
+                    if (row.classList.contains('hierarchy-row')) {
+                        row.style.position = 'sticky';
+                        row.style.top = `${topOffset}px`;
+                        row.style.zIndex = 20 - index; // Décrémenter z-index pour ordre correct
+                        topOffset += row.offsetHeight;
+                    }
+                });
+            }
+
+            function updateCrosstab(data) {
+                const effets = data.effets || [];
+                const types = [...new Set(effets.flatMap(effet => 
+                    effet.produits.flatMap(produit => 
+                        produit.actions.flatMap(action => 
+                            action.activites.map(activite => activite.type || 'N/A')
+                        )
+                    )
+                ))].sort();
+
+                crosstabHeader.innerHTML = `
+                    <tr>
+                        <th>Effet</th>
+                        ${types.map(type => `<th>${type}</th>`).join('')}
+                        <th>Total</th>
+                    </tr>
+                `;
+
+                crosstabBody.innerHTML = '';
+                const crosstabData = {};
+                let grandTotal = 0;
+
+                effets.forEach((effet, i) => {
+                    crosstabData[effet.titre] = {};
+                    types.forEach(type => crosstabData[effet.titre][type] = 0);
+
+                    effet.produits.forEach(produit => {
+                        produit.actions.forEach(action => {
+                            action.activites.forEach(activite => {
+                                const type = activite.type || 'N/A';
+                                crosstabData[effet.titre][type]++;
+                                grandTotal++;
+                            });
+                        });
+                    });
+                });
+
+                effets.forEach((effet, i) => {
+                    const rowTotal = types.reduce((sum, type) => sum + crosstabData[effet.titre][type], 0);
+                    const row = `
+                        <tr>
+                            <td>Effet ${i + 1} : ${effet.titre}</td>
+                            ${types.map(type => `<td>${crosstabData[effet.titre][type]}</td>`).join('')}
+                            <td>${rowTotal}</td>
+                        </tr>
+                    `;
+                    crosstabBody.innerHTML += row;
+                });
+
+                const columnTotals = types.map(type => 
+                    effets.reduce((sum, effet) => sum + crosstabData[effet.titre][type], 0)
+                );
+                crosstabBody.innerHTML += `
+                    <tr class="total-row">
+                        <td>Total</td>
+                        ${columnTotals.map(total => `<td>${total}</td>`).join('')}
+                        <td>${grandTotal}</td>
+                    </tr>
+                `;
+            }
+
+            function chargeTable(filtre) {
+                let params = new URLSearchParams();
+                const checkboxes = document.querySelectorAll(`input[data-group="${filtre}"]:checked`);
+                checkboxes.forEach(checkbox => {
+                    if (!checkbox.id.startsWith('select-all-')) {
+                        params.append(filtre, checkbox.value);
+                    }
+                });
+
+                fetch(`?${params.toString()}`, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Erreur réseau');
+                        return response.json();
+                    })
+                    .then(data => {
+                        const annees = data.annees || [];
+                        const anneeDebut = data.annee_debut;
+
+                        tableBody.innerHTML = '';
+
+                        // Calcul des coûts totaux par année pour chaque niveau
+                        const effets = data.effets || [];
+                        effets.forEach(effet => {
+                            effet.coutsParAnnee = Array(annees.length).fill(0);
+                            effet.totalCost = 0;
+                            effet.produits.forEach(produit => {
+                                produit.coutsParAnnee = Array(annees.length).fill(0);
+                                produit.totalCost = 0;
+                                produit.actions.forEach(action => {
+                                    action.coutsParAnnee = Array(annees.length).fill(0);
+                                    action.totalCost = 0;
+                                    action.activites.forEach(activite => {
+                                        activite.couts = activite.couts || Array(annees.length).fill(0);
+                                        activite.totalCost = 0;
+                                        activite.couts.forEach((cout, index) => {
+                                            const coutNum = parseFloat(cout) || 0;
+                                            activite.totalCost += coutNum;
+                                            action.coutsParAnnee[index] += coutNum;
+                                            produit.coutsParAnnee[index] += coutNum;
+                                            effet.coutsParAnnee[index] += coutNum;
+                                        });
+                                        action.totalCost += activite.totalCost;
+                                    });
+                                    produit.totalCost += action.totalCost;
+                                });
+                                effet.totalCost += produit.totalCost;
+                            });
+                        });
+
+                        // Calcul du coût total global
+                        let totalCoutsParAnnee = Array(annees.length).fill(0);
+                        let totalCostGlobal = 0;
+                        effets.forEach(effet => {
+                            effet.coutsParAnnee.forEach((cout, index) => {
+                                totalCoutsParAnnee[index] += cout;
+                            });
+                            totalCostGlobal += effet.totalCost;
+                        });
+
+                        // Ajouter la ligne "Impact"
+                        const totalColonnes = 8 + 2 * annees.length;
+                        let impactRow = `
+                            <tr class="hierarchy-row impact-row">
+                                <td class="impact-bg" colspan="${totalColonnes}">Impact : ${planImpact || 'Impact non défini'}</td>
+                            </tr>`;
+                        tableBody.innerHTML += impactRow;
+
+                        // Ajouter la ligne "Coût Total"
+                        const colsJusquaProgramme = 7 + annees.length;
+                        let totalRow = `
+                            <tr class="hierarchy-row total-row">
+                                <td class="total-bg" colspan="${colsJusquaProgramme}">Coût Total</td>
+                        `;
+                        annees.forEach((annee, index) => totalRow += `<td class="total-bg">${totalCoutsParAnnee[index].toFixed(2)}</td>`);
+                        totalRow += `<td class="total-bg">${totalCostGlobal.toFixed(2)}</td></tr>`;
+                        tableBody.innerHTML += totalRow;
+
+                        const colsIntituleAProgramme = 6 + annees.length;
+                        effets.forEach((effet, i) => {
+                            let effetRow = `
+                                <tr class="hierarchy-row effet-row">
+                                    <td class="effet-bg">Effet ${i + 1}</td>
+                                    <td class="effet-bg" colspan="${colsIntituleAProgramme}">${effet.titre}</td>
+                            `;
+                            annees.forEach((annee, index) => effetRow += `<td class="effet-bg">${effet.coutsParAnnee[index].toFixed(2)}</td>`);
+                            effetRow += `<td class="effet-bg">${effet.totalCost.toFixed(2)}</td></tr>`;
+                            tableBody.innerHTML += effetRow;
+
+                            effet.produits.forEach((produit, j) => {
+                                let produitRow = `
+                                    <tr class="hierarchy-row produit-row">
+                                        <td class="produit-bg">Produit ${i + 1}.${j + 1}</td>
+                                        <td class="produit-bg" colspan="${colsIntituleAProgramme}">${produit.titre}</td>
+                                `;
+                                annees.forEach((annee, index) => produitRow += `<td class="produit-bg">${produit.coutsParAnnee[index].toFixed(2)}</td>`);
+                                produitRow += `<td class="produit-bg">${produit.totalCost.toFixed(2)}</td></tr>`;
+                                tableBody.innerHTML += produitRow;
+
+                                produit.actions.forEach((action, k) => {
+                                    let actionRow = `
+                                        <tr class="hierarchy-row action-row">
+                                            <td class="action-bg">Action ${i + 1}.${j + 1}.${k + 1}</td>
+                                            <td class="action-bg" colspan="${colsIntituleAProgramme}">${action.titre}</td>
+                                    `;
+                                    annees.forEach((annee, index) => actionRow += `<td class="action-bg">${action.coutsParAnnee[index].toFixed(2)}</td>`);
+                                    actionRow += `<td class="action-bg">${action.totalCost.toFixed(2)}</td></tr>`;
+                                    tableBody.innerHTML += actionRow;
+
+                                    action.activites.forEach((activite, l) => {
+                                        let activiteRow = `
+                                            <tr class="activite-row">
+                                                <td class="activite-bg">Activité ${i + 1}.${j + 1}.${k + 1}.${l + 1}</td>
+                                                <td class="activite-bg">${activite.titre}</td>
+                                                <td class="activite-bg">${activite.type || 'N/A'}</td>
+                                                <td class="activite-bg">${activite.indicateur_label || 'N/A'}</td>
+                                                <td class="activite-bg">${activite.indicateur_reference || 'N/A'}</td>
+                                        `;
+                                        annees.forEach(annee => {
+                                            const index = parseInt(annee) - anneeDebut;
+                                            const cible = (activite.cibles && index >= 0 && index < activite.cibles.length) ? activite.cibles[index] : 'N/A';
+                                            activiteRow += `<td class="activite-bg">${cible}</td>`;
+                                        });
+                                        activiteRow += `
+                                            <td class="activite-bg">${activite.structure || 'N/A'}</td>
+                                            <td class="activite-bg">${activite.programme || 'N/A'}</td>
+                                            ${annees.map((annee, index) => `<td class="activite-bg">${(activite.couts[index] || 0).toFixed(2)}</td>`).join('')}
+                                            <td class="activite-bg">${activite.totalCost.toFixed(2)}</td>
+                                        `;
+                                        tableBody.innerHTML += activiteRow;
+                                    });
+                                });
+                            });
+                        });
+
+                        if (effets.length === 0) {
+                            tableBody.innerHTML += `<tr><td colspan="${annees.length * 2 + 8}" class="text-center">Aucune donnée trouvée</td></tr>`;
+                        }
+
+                        updateHierarchyPositions();
+                        updateCrosstab(data);
+                    })
+                    .catch(error => {
+                        console.error('Erreur AJAX:', error);
+                        let totalColonnes = table.rows[0]?.cells.length || 1;
+                        tableBody.innerHTML = `
+                            <tr class="hierarchy-row impact-row">
+                                <td class="impact-bg" colspan="${totalColonnes}">Impact : ${planImpact || 'Impact non défini'}</td>
+                            </tr>
+                            <tr><td colspan="${totalColonnes}" class="text-center text-danger">Erreur de chargement des données</td></tr>
+                            <tr class="hierarchy-row total-row">
+                                <td class="total-bg" colspan="${totalColonnes}">Coût Total</td>
+                            </tr>
+                        `;
+                        updateHierarchyPositions();
+                        crosstabBody.innerHTML = `<tr><td colspan="${totalColonnes}" class="text-center">Erreur de chargement des données</td></tr>`;
+                    });
+            }
+
+            function filterTable() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                const rows = tableBody.getElementsByTagName('tr');
+                let regex;
+
+                try {
+                    regex = new RegExp(searchTerm, 'i');
+                } catch (e) {
+                    console.error("Expression régulière invalide :", e);
+                    return;
+                }
+
+                Array.from(rows).forEach(row => {
+                    if (row.classList.contains('hierarchy-row')) {
+                        row.style.display = ''; // Toujours afficher les lignes hiérarchiques
+                    } else {
+                        const cells = row.getElementsByTagName('td');
+                        if (cells.length === 0) return;
+
+                        const rowText = Array.from(cells)
+                            .map(cell => cell.textContent.trim())
+                            .join(' ').toLowerCase();
+
+                        row.style.display = regex.test(rowText) ? '' : 'none';
+                    }
+                });
+
+                updateHierarchyPositions();
+            }
+
+            toggleSearchBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                searchContainer.classList.toggle('active');
+                if (searchContainer.classList.contains('active')) {
+                    searchInput.focus();
+                } else {
+                    searchInput.value = '';
+                    filterTable();
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!floatingSearch.contains(e.target) && searchContainer.classList.contains('active')) {
+                    searchContainer.classList.remove('active');
+                    searchInput.value = '';
+                    filterTable();
+                }
+            });
+
+            floatingSearch.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+
+            searchInput.addEventListener('input', filterTable);
+
+            downloadBtn.addEventListener('click', function () {
+                const wb = XLSX.utils.book_new();
+
+                // Première feuille : Grand tableau (Plan)
+                const planData = [];
+                const planMerges = [];
+
+                // En-têtes - Ligne 1 (top)
+                let col = 0;
+                let row = 0;
+                planData[row] = [];
+                Array.from(tableHeaderTop.cells).forEach(th => {
+                    const content = th.textContent.trim();
+                    const rowspan = parseInt(th.getAttribute('rowspan') || '1', 10);
+                    const colspan = parseInt(th.getAttribute('colspan') || '1', 10);
+                    planData[row][col] = content;
+                    if (rowspan > 1 || colspan > 1) {
+                        planMerges.push({ s: { r: row, c: col }, e: { r: row + rowspan - 1, c: col + colspan - 1 } });
+                    }
+                    col += colspan;
+                });
+
+                // En-têtes - Ligne 2 (bottom)
+                row = 1;
+                col = 3;
+                planData[row] = [];
+                Array.from(tableHeaderBottom.cells).forEach(th => {
+                    const content = th.textContent.trim();
+                    const colspan = parseInt(th.getAttribute('colspan') || '1', 10);
+                    while (planData[row][col] !== undefined) col++;
+                    planData[row][col] = content;
+                    if (colspan > 1) {
+                        planMerges.push({ s: { r: row, c: col }, e: { r: row, c: col + colspan - 1 } });
+                    }
+                    col += colspan;
+                });
+
+                // Corps du tableau
+                const rows = Array.from(tableBody.getElementsByTagName('tr'))
+                    .filter(row => row.style.display !== 'none');
+
+                rows.forEach(tr => {
+                    row++;
+                    col = 0;
+                    if (!planData[row]) planData[row] = [];
+                    Array.from(tr.cells).forEach(td => {
+                        const content = td.textContent.trim();
+                        const colspan = parseInt(td.getAttribute('colspan') || '1', 10);
+                        while (planData[row][col] !== undefined) col++;
+                        planData[row][col] = content;
+                        if (colspan > 1) {
+                            planMerges.push({ s: { r: row, c: col }, e: { r: row, c: col + colspan - 1 } });
+                        }
+                        col += colspan;
+                    });
+                });
+
+                const planSheet = XLSX.utils.aoa_to_sheet(planData);
+                planSheet['!merges'] = planMerges;
+
+                // Définir les styles pour le tableau "Plan"
+                const range = XLSX.utils.decode_range(planSheet['!ref']);
+                for (let R = range.s.r; R <= range.e.r; ++R) {
+                    for (let C = range.s.c; C <= range.e.c; ++C) {
+                        const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
+                        if (!planSheet[cellAddress]) planSheet[cellAddress] = { t: 's', v: '' };
+
+                        planSheet[cellAddress].s = {
+                            border: {
+                                top: { style: 'thin', color: { rgb: '007A3D' } },
+                                bottom: { style: 'thin', color: { rgb: '007A3D' } },
+                                left: { style: 'thin', color: { rgb: '007A3D' } },
+                                right: { style: 'thin', color: { rgb: '007A3D' } }
+                            },
+                            alignment: { horizontal: 'left', vertical: 'center' }
+                        };
+
+                        if (R === 0 || R === 1) {
+                            planSheet[cellAddress].s.fill = { fgColor: { rgb: 'FFA500' } };
+                            planSheet[cellAddress].s.font = { color: { rgb: 'FFFFFF' } };
+                            planSheet[cellAddress].s.alignment.horizontal = 'center';
+                        } else {
+                            const tr = rows[R - 2];
+                            if (tr.classList.contains('impact-row')) {
+                                planSheet[cellAddress].s.fill = { fgColor: { rgb: 'D1E7DD' } };
+                            } else if (tr.classList.contains('total-row')) {
+                                planSheet[cellAddress].s.fill = { fgColor: { rgb: 'B8D8C9' } };
+                            } else if (tr.classList.contains('effet-row')) {
+                                planSheet[cellAddress].s.fill = { fgColor: { rgb: 'F8D7DA' } };
+                            } else if (tr.classList.contains('produit-row')) {
+                                planSheet[cellAddress].s.fill = { fgColor: { rgb: 'FFF3CD' } };
+                            } else if (tr.classList.contains('action-row')) {
+                                planSheet[cellAddress].s.fill = { fgColor: { rgb: 'CCE5FF' } };
+                            } else if (tr.classList.contains('activite-row')) {
+                                planSheet[cellAddress].s.fill = { fgColor: { rgb: 'FFFFFF' } };
+                            }
+                        }
+                    }
+                }
+
+                planSheet['!cols'] = Array(range.e.c + 1).fill({ wch: 20 });
+
+                XLSX.utils.book_append_sheet(wb, planSheet, "Plan");
+
+                // Deuxième feuille : Tableau des stats (Stats)
+                const statsData = [];
+                statsData.push(["Nombre d'activités par effet et par nature"]);
+                const crosstabHeaderRow = Array.from(crosstabHeader.getElementsByTagName('tr')[0].cells).map(cell => cell.textContent.trim());
+                statsData.push(crosstabHeaderRow);
+                const crosstabRows = Array.from(crosstabBody.getElementsByTagName('tr'));
+                crosstabRows.forEach(row => {
+                    const cells = Array.from(row.cells).map(cell => cell.textContent.trim());
+                    statsData.push(cells);
+                });
+
+                const statsSheet = XLSX.utils.aoa_to_sheet(statsData);
+
+                // Définir les styles pour le tableau "Stats"
+                const statsRange = XLSX.utils.decode_range(statsSheet['!ref']);
+                for (let R = statsRange.s.r; R <= statsRange.e.r; ++R) {
+                    for (let C = statsRange.s.c; C <= statsRange.e.c; ++C) {
+                        const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
+                        if (!statsSheet[cellAddress]) statsSheet[cellAddress] = { t: 's', v: '' };
+
+                        statsSheet[cellAddress].s = {
+                            border: {
+                                top: { style: 'thin', color: { rgb: '007A3D' } },
+                                bottom: { style: 'thin', color: { rgb: '007A3D' } },
+                                left: { style: 'thin', color: { rgb: '007A3D' } },
+                                right: { style: 'thin', color: { rgb: '007A3D' } }
+                            },
+                            alignment: { horizontal: 'center', vertical: 'center' }
+                        };
+
+                        // En-tête
+                        if (R === 1) {
+                            statsSheet[cellAddress].s.fill = { fgColor: { rgb: 'E0E0E0' } }; // Gris clair
+                            statsSheet[cellAddress].s.font = { bold: true };
+                        }
+                        // Ligne Total
+                        else if (R === statsRange.e.r) {
+                            statsSheet[cellAddress].s.fill = { fgColor: { rgb: 'E0E0E0' } }; // Gris clair
+                            statsSheet[cellAddress].s.font = { bold: true };
+                        }
+                    }
+                }
+
+                // Ajuster la largeur des colonnes
+                statsSheet['!cols'] = Array(statsRange.e.c + 1).fill({ wch: 15 });
+
+                XLSX.utils.book_append_sheet(wb, statsSheet, "Stats");
+
+                // Générer et télécharger le fichier Excel
+                XLSX.writeFile(wb, 'plan_action.xlsx');
+            });
+
+            function updateDependentFilters(filtre, nouvellesValeurs) {
+                const filterContainer = document.getElementById(`filter-${filtre}`);
+                filterContainer.innerHTML = '';
+
+                const selectAllLi = document.createElement('li');
+                const selectAllLabel = document.createElement('label');
+                selectAllLabel.classList.add('dropdown-item');
+                const selectAllCheckbox = document.createElement('input');
+                selectAllCheckbox.type = 'checkbox';
+                selectAllCheckbox.classList.add('checkbox-option');
+                selectAllCheckbox.dataset.group = filtre;
+                selectAllCheckbox.id = `select-all-${filtre}`;
+                selectAllLabel.appendChild(selectAllCheckbox);
+                selectAllLabel.appendChild(document.createTextNode(' Tout sélectionner'));
+                selectAllLi.appendChild(selectAllLabel);
+                filterContainer.appendChild(selectAllLi);
+
+                const isObjectArray = nouvellesValeurs.length > 0 && typeof nouvellesValeurs[0] === 'object';
+                (isObjectArray ? nouvellesValeurs : nouvellesValeurs.map(v => ({ titre: String(v) }))).forEach(valeur => {
+                    const li = document.createElement('li');
+                    const label = document.createElement('label');
+                    label.classList.add('dropdown-item');
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.classList.add('checkbox-option');
+                    checkbox.dataset.group = filtre;
+                    checkbox.value = valeur.titre;
+                    checkbox.checked = true;
+
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(` ${valeur.titre}`));
+                    li.appendChild(label);
+                    filterContainer.appendChild(li);
+                });
+
+                const checkboxes = document.querySelectorAll(`input[data-group="${filtre}"]`);
+                const selectAllCheckboxElement = document.querySelector(`input[data-group="${filtre}"]#select-all-${filtre}`);
+                const button = document.querySelector(`button[data-group="${filtre}"]`);
+
+                if (!selectAllCheckboxElement || !button || checkboxes.length === 0) {
+                    console.error(`Élément(s) manquant(s) pour le filtre "${filtre}"`);
+                    return;
+                }
+
+                function updateDropdownButton() {
+                    const selectedOptions = Array.from(checkboxes)
+                        .filter(checkbox => checkbox.checked && checkbox !== selectAllCheckboxElement)
+                        .map(checkbox => checkbox.value);
+                    button.textContent = selectedOptions.length > 0 ? selectedOptions.join(', ') : `Sélectionner les ${filtre}s`;
+                }
+
+                function cocherToutesLesCasesAuDemarrage() {
+                    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked || checkbox === selectAllCheckboxElement);
+                    selectAllCheckboxElement.checked = allChecked;
+                    updateDropdownButton();
+                    chargeTable(filtre);
+                }
+
+                selectAllCheckboxElement.addEventListener('change', function () {
+                    const isChecked = this.checked;
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox !== selectAllCheckboxElement) {
+                            checkbox.checked = isChecked;
+                        }
+                    });
+                    updateDropdownButton();
+                    chargeTable(filtre);
+                });
+
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function () {
+                        if (this !== selectAllCheckboxElement) {
+                            selectAllCheckboxElement.checked = Array.from(checkboxes)
+                                .every(checkbox => checkbox.checked || checkbox === selectAllCheckboxElement);
+                        }
+                        updateDropdownButton();
+                        chargeTable(filtre);
+                    });
+                });
+
+                cocherToutesLesCasesAuDemarrage();
+            }
+
+            const effetCheckboxes = document.querySelectorAll(`input[data-group="effet"]`);
+            const effetSelectAllCheckbox = document.querySelector(`input[data-group="effet"]#select-all-effet`);
+            const effetButton = document.querySelector(`button[data-group="effet"]`);
+
+            if (!effetSelectAllCheckbox || !effetButton || effetCheckboxes.length === 0) {
+                console.error(`Élément(s) manquant(s) pour le filtre "effet"`);
+            } else {
+                function updateEffetDropdownButton() {
+                    const selectedOptions = Array.from(effetCheckboxes)
+                        .filter(checkbox => checkbox.checked && checkbox !== effetSelectAllCheckbox)
+                        .map(checkbox => checkbox.value);
+                    effetButton.textContent = selectedOptions.length > 0 ? selectedOptions.join(', ') : `Sélectionner les effets`;
+                }
+
+                function cocherToutesLesCasesEffet() {
+                    effetCheckboxes.forEach(checkbox => checkbox.checked = true);
+                    effetSelectAllCheckbox.checked = true;
+                    updateEffetDropdownButton();
+                    chargeTable("effet");
+                }
+
+                effetCheckboxes.forEach(checkbox => checkbox.addEventListener('change', function () {
+                    if (this !== effetSelectAllCheckbox) {
+                        effetSelectAllCheckbox.checked = Array.from(effetCheckboxes)
+                            .every(checkbox => checkbox.checked || checkbox === effetSelectAllCheckbox);
+                    }
+                    updateEffetDropdownButton();
+                    chargeTable("effet");
+                }));
+
+                effetSelectAllCheckbox.addEventListener('change', function () {
+                    const isChecked = this.checked;
+                    effetCheckboxes.forEach(checkbox => {
+                        if (checkbox !== effetSelectAllCheckbox) {
+                            checkbox.checked = isChecked;
+                        }
+                    });
+                    updateEffetDropdownButton();
+                    chargeTable("effet");
+                });
+
+                cocherToutesLesCasesEffet();
+            }
+
+            tableContainer.addEventListener('scroll', updateHierarchyPositions);
+        });
+    </script>
+{% endblock %}
+
+{% block style %}
+    <style>
+        .animate-container {
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        .animate-title {
+            animation: slideUp 0.6s ease-in-out forwards;
+        }
+
+        .animate-section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-menu {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .checkbox-option {
+            margin-right: 10px;
+        }
+
+        .dropdown-toggle {
+            white-space: normal;
+            word-wrap: break-word;
+            width: auto;
+            min-width: 200px;
+            padding: 10px;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        table {
+            border-collapse: collapse;
+            font-family: helvetica;
+            width: 100%;
+            border: 0.5px solid #000 !important;
+        }
+
+        td, th {
+            border: 0.5px solid #000 !important;
+            padding: 10px;
+            min-width: 150px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .impact-bg {
+            background-color: #d1e7dd; /* Vert clair pour Impact */
+        }
+
+        .total-bg {
+            background-color: #b8d8c9; /* Vert légèrement plus foncé pour Coût Total */
+        }
+
+        .effet-bg {
+            background-color: #f8d7da; /* Rouge clair pour Effet */
+        }
+
+        .produit-bg {
+            background-color: #fff3cd; /* Jaune clair pour Produit */
+        }
+
+        .action-bg {
+            background-color: #cce5ff; /* Bleu clair pour Action */
+        }
+
+        .activite-bg {
+            background-color: #ffffff; /* Fond blanc pour les activités */
+        }
+
+        .table-container {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding: 20px;
+            position: relative;
+            border: 5px solid #007A3D;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .table-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .table-scroll-container {
+            max-height: 1000px; /* Hauteur maximale avant défilement vertical */
+            max-width: 1400px; /* Largeur maximale avant défilement horizontal */
+            overflow: auto; /* Défilement horizontal et vertical */
+            position: relative;
+            border: 0.5px solid #000;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%; /* Le tableau s'adapte à la largeur disponible */
+            max-width: none; /* Pas de limite stricte, sauf par le conteneur */
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: orange !important;
+        }
+
+        thead th {
+            background: orange !important;
+            color: white !important;
+            text-align: center;
+            opacity: 1 !important; /* Assure que l'en-tête est opaque */
+        }
+
+        #table-header-bottom th {
+            position: sticky;
+            top: 38px;
+            z-index: 29;
+            background: orange !important;
+            color: white !important;
+            text-align: center;
+            opacity: 1 !important;
+        }
+
+        .fixed-column:nth-child(1) {
+            position: sticky;
+            left: 0;
+            z-index: 35; /* Plus élevé que le thead pour rester au-dessus */
+            background: orange !important;
+            color: white !important;
+        }
+
+        tr > td:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 15; /* Suffisant pour le tbody, sous le thead */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            opacity: 1;
+        }
+
+        /* Impact et Total : défilement horizontal libre (pas de sticky left) */
+        .impact-row > td:first-child,
+        .total-row > td:first-child {
+            position: relative !important;
+            box-shadow: none;
+        }
+
+        /* Assurer que les cellules du tbody héritent de leur couleur de fond */
+        tbody tr > td {
+            background-color: inherit;
+        }
+
+        .crosstab-container {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .crosstab-container h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .crosstab-wrapper {
+            overflow-x: auto;
+        }
+
+        .crosstab-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: helvetica;
+        }
+
+        .crosstab-table th, .crosstab-table td {
+            border: 1px solid #007A3D;
+            padding: 10px;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .crosstab-table th {
+            background: #e0e0e0;
+            font-weight: bold;
+        }
+
+        .crosstab-table .total-row {
+            background: #e0e0e0;
+            font-weight: bold;
+        }
+
+        .floating-search-container {
+            position: fixed;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            padding: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            top: 85px;
+            left: 85px;
+        }
+
+        .search-icon {
+            background: none;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .search-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .search-container {
+            max-width: 0;
+            overflow: hidden;
+            transition: max-width 0.3s ease-in-out;
+            margin-left: 5px;
+        }
+
+        .search-container.active {
+            max-width: 200px;
+        }
+
+        #search-input {
+            border: 2px solid #007A3D;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        #search-input:focus {
+            outline: none;
+            border-color: orange;
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+        }
+
+        .floating-download-container {
+            position: fixed;
+            z-index: 1000;
+            top: 85px;
+            right: 70px;
+        }
+
+        .download-icon {
+            background: none;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .download-icon:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
+{% endblock %}

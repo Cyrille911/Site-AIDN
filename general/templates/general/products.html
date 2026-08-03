@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDN - Nos Produits</title>
+    <link href="{% static 'general/assets/css/products-personal-style.css' %}" rel="stylesheet">
+
+<!--
+
+TemplateMo 593 personal shape
+
+https://templatemo.com/tm-593-personal-shape
+
+-->
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Des solutions numeriques innovantes pour votre transformation</h1>
+            <p class="subtitle">Nous concevons des outils digitaux performants qui accelerent la croissance de votre organisation et optimisent vos processus metiers</p>
+            <a href="#portfolio" class="cta-button">Decouvrir nos produits</a>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView()"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Nos services</h2>
+            <div class="about-content">
+                <div class="about-image slide-in-left"></div>
+                <div class="about-text slide-in-right">
+                    <h3>Des solutions sur mesure pour chaque defi numerique</h3>
+                    <p>AIDN accompagne les entreprises et les administrations publiques dans leur transformation digitale. Nous concevons des plateformes web, des applications metiers et des outils de pilotage adaptes aux realites du marche africain.</p>
+                    <p>Notre approche allie expertise technique, connaissance du terrain et vision strategique. Chaque projet est une opportunite de creer des solutions durables qui evoluent avec vos besoins et generent un impact mesurable.</p>
+                    <p>De la conception a la mise en production, nous vous accompagnons a chaque etape pour garantir la reussite de vos projets numeriques.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Transformation Digitale</span>
+                        <span class="skill-tag">Applications Web</span>
+                        <span class="skill-tag">Business Intelligence</span>
+                        <span class="skill-tag">Data Science & IA</span>
+                        <span class="skill-tag">Cybersecurite</span>
+                        <span class="skill-tag">IoT & Embarque</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title fade-in">Nos produits</h2>
+            <div class="portfolio-grid">
+                <a href="#" class="portfolio-item in-dev">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Ask for data</h4>
+                        <p>Un outil de de référence pour linformation sûre en Côte d'Ivoire</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Tableau de bord</span>
+                            <span class="tech-tag">Chatbot</span>
+                            <span class="tech-tag">Revues</span>
+                            <span class="tech-tag">Docs annexes</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="{% url 'plan_action_list' %}" class="portfolio-item">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Ivoire plan</h4>
+                        <p>Votre outil d'éducation, de planinification et suivi-évaluation</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Plan academy</span>
+                            <span class="tech-tag">Plannificateur</span>
+                            <span class="tech-tag">Suivi-évaluation</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="portfolio-item in-dev">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Mon medecin mobile</h4>
+                        <p>Bénéficier de l'expertise d'un médecin sans vous déplacer</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Consultation</span>
+                            <span class="tech-tag">Imagérie médicale</span>
+                            <span class="tech-tag">Pharmacie en ligne</span>
+                            <span class="tech-tag">Astuces santé - Chatbot</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="portfolio-item in-dev">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Dashboard Interface</h4>
+                        <p>Clean and functional dashboard design for data analytics platform with complex information architecture and real-time data visualization.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">SCSS</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="portfolio-item in-dev">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Marketing Website</h4>
+                        <p>Modern marketing website with interactive animations and optimized conversion funnels. Built for maximum performance and SEO.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Framer Motion</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="portfolio-item in-dev">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Creative Portfolio</h4>
+                        <p>Artistic portfolio website featuring immersive galleries, smooth transitions, and creative storytelling for a digital artist.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">GSAP</span>
+                            <span class="tech-tag">WebGL</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modale produit en developpement -->
+    <style>
+        .dev-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0); z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            pointer-events: none;
+            transition: background 0.35s ease;
+        }
+        .dev-modal-overlay.active {
+            background: rgba(0,0,0,0.6);
+            pointer-events: auto;
+        }
+        .dev-modal-box {
+            background: #1e293b; color: #fff; border-radius: 16px;
+            padding: 2.5rem 2rem; max-width: 420px; width: 90%;
+            text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            opacity: 0; transform: scale(0.85) translateY(20px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+        .dev-modal-overlay.active .dev-modal-box {
+            opacity: 1; transform: scale(1) translateY(0);
+        }
+        .dev-modal-btn {
+            background: linear-gradient(135deg,#6366f1,#8b5cf6); color: #fff;
+            border: none; padding: 0.7rem 2rem; border-radius: 8px;
+            font-size: 1rem; cursor: pointer; transition: transform 0.2s;
+        }
+        .dev-modal-btn:hover { transform: scale(1.05); }
+    </style>
+    <div id="dev-modal-overlay" class="dev-modal-overlay">
+        <div class="dev-modal-box">
+            <div style="font-size:3rem; margin-bottom:1rem;">🚧</div>
+            <h3 style="margin-bottom:0.8rem; font-size:1.4rem;">Produit en cours de developpement</h3>
+            <p style="color:#94a3b8; margin-bottom:1.5rem; line-height:1.6;" id="dev-modal-text">Ce produit est actuellement en cours de developpement. Il sera bientot disponible. Restez connectes !</p>
+            <button class="dev-modal-btn" id="dev-modal-close">Compris</button>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-floating-shapes">
+            <div class="contact-shape contact-shape-1"></div>
+            <div class="contact-shape contact-shape-2"></div>
+            <div class="contact-shape contact-shape-3"></div>
+            <div class="contact-shape contact-shape-4"></div>
+            <div class="contact-shape contact-shape-5"></div>
+            <div class="contact-shape contact-shape-6"></div>
+        </div>
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title fade-in">Travaillons ensemble</h2>
+                <p class="fade-in">Vous avez un projet numerique ? Parlons-en ! Notre equipe est prete a vous accompagner dans la conception et la realisation de solutions innovantes adaptees a vos besoins.</p>
+                <form class="contact-form fade-in" method="post" action="{% url 'contact_email' %}">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="votre.email@exemple.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Objet</label>
+                        <input type="text" id="subject" name="subject" placeholder="De quoi s'agit-il ?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Decrivez votre projet..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 AIDN - Agence Ivoirienne de Developpement Numerique. Tous droits reserves.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="{% url 'a_propos' %}">A propos</a>
+                    <a href="{% url 'nous_joindre' %}">Nous joindre</a>
+                    <a href="{% url 'accueil' %}">Accueil</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="{% static 'general/assets/js/products-personal-javascripts.js' %}"></script>
+<script>
+    (function() {
+        var overlay = document.getElementById('dev-modal-overlay');
+        function openModal(name) {
+            document.getElementById('dev-modal-text').textContent =
+                'Le produit "' + name + '" est actuellement en cours de developpement. Il sera bientot disponible. Restez connectes !';
+            overlay.classList.add('active');
+        }
+        function closeModal() {
+            overlay.classList.remove('active');
+        }
+        document.querySelectorAll('.portfolio-item.in-dev').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal(this.querySelector('h4').textContent);
+            });
+        });
+        document.getElementById('dev-modal-close').addEventListener('click', closeModal);
+        overlay.addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+    })();
+</script>
+
+</body>
+</html>

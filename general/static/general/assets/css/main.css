@@ -3482,9 +3482,11 @@ input, select, textarea {
 			}
 
 				#intro h1 {
-					font-size: 3.25rem;
-					line-height: 1.1;
-					margin-bottom: 1rem;
+					font-size: 2.5rem;
+					line-height: 1.2;
+					margin-bottom: 0.5rem;
+					text-align: center;
+					font-weight: 300;
 				}
 
 				#intro p {
@@ -3620,7 +3622,11 @@ input, select, textarea {
 		z-index: 1000;
 		background: transparent;
 		padding: 1rem 2rem;
-		transition: background 1s ease ;
+		transition: background 1s ease, transform 0.4s ease;
+	}
+
+	.modern-navbar.navbar-hidden {
+		transform: translateY(-100%);
 	}
 
 	.modern-navbar:hover {

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config, Csv
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -135,7 +137,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'fr-ci'
+LANGUAGE_CODE = 'fr'
+
+LANGUAGES = [
+    ('fr', _('Français')),
+    ('en', _('English')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 TIME_ZONE = 'Africa/Abidjan'
 
@@ -163,12 +174,12 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email configuration (Gmail SMTP)
+# Configuration de l'email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='cyrilletaha01@gmail.com')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='ivhsvvuuelnjvzqx')
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST = 'smtp.gmail.com'  # Serveur SMTP pour Gmail
+EMAIL_PORT = 587  # Port pour TLS
+EMAIL_USE_TLS = True  # Utiliser TLS
+EMAIL_HOST_USER = 'cyrilletaha01@gmail.com'  # adresse e-mail
+EMAIL_HOST_PASSWORD = 'ivhsvvuuelnjvzqx'  # mot de passe
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Email par défaut pour l'envoi
 CONTACT_EMAIL = 'aidn.tech@gmail.com'

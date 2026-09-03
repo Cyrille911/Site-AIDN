@@ -1,0 +1,233 @@
+/* =============================================
+   Mobile Menu - Shared across all pages
+   ============================================= */
+
+/* Mobile language item - hidden on desktop */
+.mobile-lang-item {
+	display: none;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 10001;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}
+
+.mobile-menu-overlay.active {
+	display: block;
+	opacity: 1;
+}
+
+/* Mobile Menu Toggle - hidden on desktop */
+.mobile-menu-toggle {
+	display: none !important;
+	align-items: center;
+	gap: 0.5rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0.25rem 1rem;
+	text-decoration: none;
+	color: #ffffff;
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.8rem;
+	font-weight: 900;
+	letter-spacing: 0.075em;
+	text-transform: uppercase;
+}
+
+/* When toggle is a direct child of body, float it fixed */
+body > .mobile-menu-toggle {
+	position: fixed;
+	top: 0.75rem;
+	right: 0.75rem;
+	z-index: 10003;
+}
+
+/* Hide hamburger when menu is open */
+.mobile-menu-toggle.active {
+	display: none !important;
+}
+
+.hamburger-label {
+	color: #ffffff;
+}
+
+.hamburger-icon {
+	display: inline-block;
+	position: relative;
+	width: 18px;
+	height: 14px;
+	vertical-align: middle;
+}
+
+.hamburger-icon span {
+	display: block;
+	width: 100%;
+	height: 2px;
+	background: #ffffff;
+	position: absolute;
+	left: 0;
+	border-radius: 1px;
+}
+
+.hamburger-icon span:nth-child(1) { top: 0; }
+.hamburger-icon span:nth-child(2) { top: 6px; }
+.hamburger-icon span:nth-child(3) { top: 12px; }
+
+/* Close button inside mobile menu */
+.menu-close-item {
+	border-top: 0 !important;
+	text-align: right;
+	margin: 0 !important;
+	padding: 0.25rem 0 0 !important;
+}
+
+.menu-close {
+	display: inline-block;
+	font-size: 2rem;
+	color: #909498;
+	text-decoration: none !important;
+	border-bottom: none !important;
+	border: none;
+	line-height: 1;
+	padding: 0;
+	transition: color 0.2s ease;
+}
+
+.menu-close:hover,
+.menu-close:focus,
+.menu-close:active {
+	color: #212931;
+	text-decoration: none !important;
+	border-bottom: none !important;
+	border: none;
+}
+
+/* Hide navbar-menu on desktop when it's outside .modern-navbar */
+body > .navbar-menu {
+	display: none;
+}
+
+/* Mobile panel */
+@media (max-width: 768px) {
+	.mobile-menu-toggle {
+		display: flex !important;
+	}
+
+	.mobile-menu-toggle.active {
+		display: none !important;
+	}
+
+	body > .navbar-menu,
+		.navbar-menu {
+			display: flex;
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 20rem;
+			max-width: 80%;
+			height: 100%;
+			background: #ffffff;
+			color: #212931;
+			flex-direction: column;
+
+			/* IMPORTANT : contenu aligné en haut */
+			justify-content: flex-start;
+			align-items: stretch;
+
+			padding-top: 0 !important;
+			padding-right: 2rem !important;
+			padding-bottom: 1rem !important;
+			padding-left: 2rem !important;
+
+			gap: 0;
+
+			transform: translateX(100%);
+			transition: transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
+			visibility: hidden;
+			overflow-y: auto;
+			z-index: 10004;
+			box-shadow: none;
+			list-style: none !important;
+			margin: 0 !important;
+		}
+	.navbar-menu.active {
+		transform: translateX(0);
+		visibility: visible;
+		box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.navbar-menu li {
+		border-top: solid 2px #eeeeee;
+		padding-left: 0 !important;
+		margin: 0 !important;
+	}
+
+	.navbar-menu li:first-child {
+		border-top: 0;
+	}
+
+	.navbar-menu li .nav-link {
+		display: block;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 0.9rem;
+		font-weight: 900;
+		letter-spacing: 0.075em;
+		padding: 0.75rem 0;
+		text-transform: uppercase;
+		color: #212931;
+		text-decoration: none;
+		border-bottom: 0;
+	}
+
+	.navbar-menu li .nav-link:hover {
+		color: #18bfef;
+	}
+
+	.navbar-menu li .nav-link.active {
+		color: #18bfef;
+	}
+
+	.navbar-right {
+		display: none;
+	}
+
+	.mobile-lang-item {
+		display: list-item;
+		border-top: solid 2px #eeeeee;
+		padding-top: 0.75rem;
+		padding-left: 0 !important;
+	}
+
+	.mobile-lang-select {
+		width: 100%;
+		padding: 0.5rem;
+		font-size: 0.9rem;
+		font-weight: 900;
+		letter-spacing: 0.075em;
+		text-transform: uppercase;
+		background: #f5f5f5;
+		color: #212931;
+		border: solid 2px #eeeeee;
+		border-radius: 5px;
+		cursor: pointer;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+	}
+}
+
+@media (max-width: 480px) {
+	body > .navbar-menu,
+	.navbar-menu {
+		padding-right: 1.75rem !important;
+		padding-left: 1.75rem !important;
+	}
+}

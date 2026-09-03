@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.conf import settings
+from django.http import JsonResponse
 
 # Create your views here.
 ## Accueil
@@ -33,17 +34,22 @@ def contact_email(request):
     if request.method == 'POST':
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
+        subject_field = request.POST.get('subject', '')
         message = request.POST.get('message', '')
 
         if name and email and message:
-            subject = f'[AIDN Contact] Message de {name}'
-            body = f"Nom : {name}\nEmail : {email}\n\nMessage :\n{message}"
+            if subject_field:
+                subject = f'[AIDN Contact] {subject_field} - Message de {name}'
+                body = f"Nom : {name}\nEmail : {email}\nObjet : {subject_field}\n\nMessage :\n{message}"
+            else:
+                subject = f'[AIDN Contact] Message de {name}'
+                body = f"Nom : {name}\nEmail : {email}\n\nMessage :\n{message}"
             try:
                 send_mail(
                     subject,
                     body,
                     settings.DEFAULT_FROM_EMAIL,
-                    ['aidn.tech@gmail.com'],
+                    [settings.CONTACT_EMAIL],
                     fail_silently=False,
                 )
                 messages.success(request, 'Votre message a été envoyé avec succès !')
@@ -52,4 +58,31 @@ def contact_email(request):
         else:
             messages.error(request, 'Veuillez remplir tous les champs.')
 
-    return redirect('accueil')
+    return redirect(request.META.get('HTTP_REFERER', 'accueil'))
+
+## Contact Produits
+def contact_email_products(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        subject_field = request.POST.get('subject', '')
+        message = request.POST.get('message', '')
+
+        if not (name and email and subject_field and message):
+            return JsonResponse({'status': 'error', 'message': 'Veuillez remplir tous les champs.'})
+
+        subject = f'Proposition de Marché : {subject_field}'
+        body = f"Nom : {name}\nEmail : {email}\nObjet : {subject_field}\n\nMessage :\n{message}"
+        try:
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.CONTACT_EMAIL],
+                fail_silently=False,
+            )
+            return JsonResponse({'status': 'success', 'message': 'Votre message a été envoyé avec succès !'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': "Une erreur est survenue lors de l'envoi. Veuillez réessayer."})
+
+    return JsonResponse({'status': 'error', 'message': 'Méthode non autorisée.'}, status=405)

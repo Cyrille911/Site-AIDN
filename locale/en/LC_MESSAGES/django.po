@@ -1,0 +1,1202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-31 00:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "À propos"
+msgstr "About"
+
+msgid "Accueil"
+msgstr "Home"
+
+msgid "Nos métiers"
+msgstr "Our services"
+
+msgid "Nos produits"
+msgstr "Our products"
+
+msgid "Portfolio"
+msgstr "Portfolio"
+
+msgid "Nous joindre"
+msgstr "Contact us"
+
+msgid "À propos d'AIDN !"
+msgstr "About AIDN!"
+
+msgid "Qui sommes-nous ?"
+msgstr "Who are we?"
+
+msgid ""
+"<b>AIDN</b> (Agence Ivoirienne de Développement Numérique) est une "
+"entreprise ivoirienne spécialisée dans la transformation digitale, le "
+"conseil en innovation technologique et le développement de solutions "
+"numériques sur mesure. Basée à Abidjan, nous accompagnons les entreprises, "
+"les administrations publiques et les organisations dans leur transition vers"
+" le numérique."
+msgstr ""
+"<b>AIDN</b> (Ivorian Agency for Digital Development) is an Ivorian company "
+"specializing in digital transformation, technology innovation consulting, "
+"and the development of custom digital solutions. Based in Abidjan, we "
+"support businesses, public administrations, and organizations in their "
+"transition to digital."
+
+msgid ""
+"Fondée par une équipe de jeunes ingénieurs passionnés par la technologie et "
+"le développement, AIDN s'engage à fournir des solutions innovantes, fiables "
+"et adaptées aux réalités du marché africain."
+msgstr ""
+"Founded by a team of young engineers passionate about technology and "
+"development, AIDN is committed to delivering innovative, reliable solutions "
+"tailored to the realities of the African market."
+
+msgid "Notre mission"
+msgstr "Our mission"
+
+msgid "Accélérer la transformation numérique en Afrique"
+msgstr "Accelerating digital transformation in Africa"
+
+msgid ""
+"Notre mission est de rendre la technologie accessible et utile pour tous. "
+"Nous croyons que le numérique est un levier puissant de croissance "
+"économique, d'efficacité opérationnelle et de développement social. À "
+"travers nos solutions, nous aidons nos clients à optimiser leurs processus, "
+"à prendre de meilleures décisions et à innover dans leur secteur d'activité."
+msgstr ""
+"Our mission is to make technology accessible and useful for everyone. We "
+"believe that digital technology is a powerful driver of economic growth, "
+"operational efficiency, and social development. Through our solutions, we "
+"help our clients optimize their processes, make better decisions, and "
+"innovate in their industry."
+
+msgid "Nos valeurs"
+msgstr "Our values"
+
+msgid "Innovation"
+msgstr "Innovation"
+
+msgid ""
+"Nous repoussons les limites de la technologie pour proposer des solutions "
+"créatives et avant-gardistes qui répondent aux défis de demain."
+msgstr ""
+"We push the boundaries of technology to deliver creative, forward-thinking "
+"solutions that address tomorrow's challenges."
+
+msgid "Excellence"
+msgstr "Excellence"
+
+msgid ""
+"Chaque projet est mené avec rigueur et professionnalisme. Nous visons la "
+"qualité dans tout ce que nous faisons."
+msgstr ""
+"Every project is carried out with rigor and professionalism. We strive for "
+"quality in everything we do."
+
+msgid "Proximité"
+msgstr "Proximity"
+
+msgid ""
+"Nous plaçons nos clients au centre de nos préoccupations. L'écoute, la "
+"compréhension et l'accompagnement personnalisé sont nos priorités."
+msgstr ""
+"We place our clients at the heart of our concerns. Listening, understanding,"
+" and personalized support are our priorities."
+
+msgid "Intégrité"
+msgstr "Integrity"
+
+msgid ""
+"La transparence et l'éthique guident toutes nos actions. Nous construisons "
+"des relations de confiance durables avec nos partenaires."
+msgstr ""
+"Transparency and ethics guide all our actions. We build lasting "
+"relationships of trust with our partners."
+
+msgid "Impact"
+msgstr "Impact"
+
+msgid ""
+"Nous mesurons notre succès à l'impact positif que nos solutions ont sur les "
+"organisations et les communautés que nous servons."
+msgstr ""
+"We measure our success by the positive impact our solutions have on the "
+"organizations and communities we serve."
+
+msgid "Collaboration"
+msgstr "Collaboration"
+
+msgid ""
+"Le travail d'équipe et le partage des connaissances sont au cœur de notre "
+"culture. Nous croyons en la force du collectif."
+msgstr ""
+"Teamwork and knowledge sharing are at the heart of our culture. We believe "
+"in the strength of the collective."
+
+msgid "Nos domaines d'expertise"
+msgstr "Our areas of expertise"
+
+msgid ""
+"<b>Transformation digitale, Conseil et Innovation</b> : Accompagnement "
+"stratégique, développement de sites web, applications métiers et plateformes"
+" collaboratives."
+msgstr ""
+"<b>Digital Transformation, Consulting and Innovation</b>: Strategic support,"
+" website development, business applications, and collaborative platforms."
+
+msgid ""
+"<b>Cybersécurité et Résilience des Systèmes</b> : Audit, prévention, "
+"détection des vulnérabilités et protection des systèmes d'information."
+msgstr ""
+"<b>Cybersecurity and Systems Resilience</b>: Auditing, prevention, "
+"vulnerability detection, and information systems protection."
+
+msgid ""
+"<b>Business Intelligence et Études Statistiques</b> : Collecte, traitement, "
+"modélisation et visualisation de données pour le pilotage et la prise de "
+"décision."
+msgstr ""
+"<b>Business Intelligence and Statistical Studies</b>: Data collection, "
+"processing, modeling, and visualization for management and decision-making."
+
+msgid ""
+"<b>Data Science et Intelligence Artificielle</b> : Modèles prédictifs, "
+"automatisation et systèmes intelligents."
+msgstr ""
+"<b>Data Science and Artificial Intelligence</b>: Predictive models, "
+"automation, and intelligent systems."
+
+msgid ""
+"<b>Solutions IoT et Systèmes Embarqués</b> : Conception de solutions "
+"connectées pour la collecte et le traitement de données en temps réel."
+msgstr ""
+"<b>IoT Solutions and Embedded Systems</b>: Design of connected solutions for"
+" real-time data collection and processing."
+
+msgid ""
+"<b>Infographie et Imprimerie</b> : Création graphique, identités visuelles, "
+"supports de communication et impression professionnelle."
+msgstr ""
+"<b>Graphic Design and Printing</b>: Graphic creation, visual identities, "
+"communication materials, and professional printing."
+
+msgid "Pourquoi choisir AIDN ?"
+msgstr "Why choose AIDN?"
+
+msgid ""
+"En choisissant AIDN, vous optez pour un partenaire technologique fiable, "
+"ancré dans les réalités africaines et tourné vers l'avenir. Notre équipe "
+"pluridisciplinaire combine expertise technique, connaissance du terrain et "
+"vision stratégique pour vous offrir des solutions qui font la différence. "
+"Nous ne livrons pas simplement des produits : nous construisons des "
+"solutions durables qui évoluent avec vos besoins."
+msgstr ""
+"By choosing AIDN, you opt for a reliable technology partner, rooted in "
+"African realities and focused on the future. Our multidisciplinary team "
+"combines technical expertise, field knowledge, and strategic vision to "
+"deliver solutions that make a difference. We don't simply deliver products: "
+"we build sustainable solutions that evolve with your needs."
+
+msgid "AIDN en quelques chiffres"
+msgstr "AIDN at a glance"
+
+msgid "Année de création"
+msgstr "Year of establishment"
+
+msgid "Siège"
+msgstr "Headquarters"
+
+msgid "Abidjan, Cocody, Côte d'Ivoire"
+msgstr "Abidjan, Cocody, Côte d'Ivoire"
+
+msgid "Domaines d'expertise"
+msgstr "Areas of expertise"
+
+msgid "6 pôles de compétences"
+msgstr "6 competency centers"
+
+msgid "Clients accompagnés"
+msgstr "Clients served"
+
+msgid "Administrations publiques, entreprises privées, organisations"
+msgstr "Public administrations, private companies, organizations"
+
+msgid "Nous contacter"
+msgstr "Contact us"
+
+msgid "Voir nos produits"
+msgstr "View our products"
+
+msgid "Nom"
+msgstr "Name"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Envoyer"
+msgstr "Send"
+
+msgid "Adresse"
+msgstr "Address"
+
+msgid "Côte d'Ivoire"
+msgstr "Côte d'Ivoire"
+
+msgid "Téléphone"
+msgstr "Phone"
+
+msgid "Réseaux Sociaux"
+msgstr "Social Media"
+
+msgid "Agence Ivoirienne de Développement Numérique"
+msgstr "Ivorian Agency for Digital Development"
+
+msgid "Un service innovant pour votre entreprise"
+msgstr "An innovative service for your business"
+
+msgid "Vous faire rêver à travers le digital !"
+msgstr "Making your dreams come true through digital!"
+
+msgid "Continue"
+msgstr "Continue"
+
+msgid "L'intelligence Numérique Au Service De La Transformation"
+msgstr "Digital Intelligence At The Service Of Transformation"
+
+msgid "Voir Plus"
+msgstr "Read More"
+
+msgid "Transformation Digitale, Conseil & Innovation"
+msgstr "Digital Transformation, Consulting & Innovation"
+
+msgid ""
+"Nous accompagnons les entreprises et les administrations dans leur "
+"transformation digitale grâce à une approche alliant conseil stratégique, "
+"innovation technologique et développement de solutions numériques. Sites "
+"web, applications métiers, plateformes collaboratives et automatisation des "
+"processus sont conçus pour améliorer la performance, l'efficacité "
+"opérationnelle et l'expérience utilisateur."
+msgstr ""
+"We support businesses and administrations in their digital transformation "
+"through an approach combining strategic consulting, technological "
+"innovation, and digital solution development. Websites, business "
+"applications, collaborative platforms, and process automation are designed "
+"to improve performance, operational efficiency, and user experience."
+
+msgid "Voir plus"
+msgstr "Read more"
+
+msgid "Cybersécurité & Résilience des Systèmes"
+msgstr "Cybersecurity & Systems Resilience"
+
+msgid ""
+"Nous mettons en place des dispositifs avancés de cybersécurité afin de "
+"protéger les systèmes d’information contre les menaces internes et externes."
+" Audit, prévention, détection des vulnérabilités et accompagnement "
+"stratégique permettent d’assurer la confidentialité, l’intégrité et la "
+"disponibilité des données."
+msgstr ""
+"We implement advanced cybersecurity measures to protect information systems "
+"against internal and external threats. Auditing, prevention, vulnerability "
+"detection, and strategic support ensure the confidentiality, integrity, and "
+"availability of data."
+
+msgid "Business Intelligence & Études Statistiques"
+msgstr "Business Intelligence & Statistical Studies"
+
+msgid ""
+"Nous transformons les données en informations stratégiques grâce à des "
+"solutions de Business Intelligence et d’analyse statistique. Collecte, "
+"traitement, modélisation et visualisation permettent de produire des "
+"indicateurs pertinents pour le pilotage, le suivi-évaluation et la prise de "
+"décision."
+msgstr ""
+"We transform data into strategic insights through Business Intelligence and "
+"statistical analysis solutions. Collection, processing, modeling, and "
+"visualization produce relevant indicators for management, monitoring and "
+"evaluation, and decision-making."
+
+msgid "Data Science & Intelligence Artificielle"
+msgstr "Data Science & Artificial Intelligence"
+
+msgid ""
+"Grâce à la Data Science et à l’Intelligence Artificielle, nous développons "
+"des modèles prédictifs, des solutions d’automatisation et des systèmes "
+"intelligents capables d’exploiter les données afin d’optimiser les "
+"processus, améliorer les performances et anticiper les évolutions."
+msgstr ""
+"Through Data Science and Artificial Intelligence, we develop predictive "
+"models, automation solutions, and intelligent systems capable of leveraging "
+"data to optimize processes, improve performance, and anticipate future "
+"trends."
+
+msgid "Solutions IoT & Systèmes Embarqués"
+msgstr "IoT Solutions & Embedded Systems"
+
+msgid ""
+"Nous concevons des solutions connectées intégrant capteurs, objets "
+"intelligents et systèmes embarqués pour la collecte, le traitement et la "
+"transmission des données en temps réel. Nos solutions permettent "
+"d’automatiser les processus et d’améliorer le suivi des équipements et "
+"infrastructures."
+msgstr ""
+"We design connected solutions integrating sensors, smart objects, and "
+"embedded systems for real-time data collection, processing, and "
+"transmission. Our solutions enable process automation and improved "
+"monitoring of equipment and infrastructure."
+
+msgid "Infographie & Imprimerie"
+msgstr "Graphic Design & Printing"
+
+msgid ""
+"Nous concevons des supports de communication visuelle modernes et impactants"
+" : identités graphiques, affiches, brochures, flyers et supports "
+"institutionnels. De la création graphique à l’impression, nous garantissons "
+"des réalisations professionnelles adaptées à votre image."
+msgstr ""
+"We design modern and impactful visual communication materials: graphic "
+"identities, posters, brochures, flyers, and institutional materials. From "
+"graphic design to printing, we guarantee professional results tailored to "
+"your brand image."
+
+msgid "Promouvoir une Côte d'Ivoire connectée, Hub de l'Afrique Moderne !"
+msgstr "Promoting a connected Ivory Coast, Hub of Modern Africa!"
+
+msgid "Le génie ivoirien à l'œuvre d'une nouvelle ère !"
+msgstr "Ivorian ingenuity at work in a new era!"
+
+msgid "La science des données au cœur de l'Intelligence Economique !"
+msgstr "Data science at the heart of Economic Intelligence!"
+
+msgid "Nous joindre..."
+msgstr "Contact us..."
+
+msgid ""
+"Vous avez un projet, une question ou souhaitez en savoir plus sur nos "
+"services ?"
+msgstr ""
+"Do you have a project, a question, or would you like to learn more about our"
+" services?"
+
+msgid "N'hésitez pas à nous contacter. Notre équipe est à votre écoute."
+msgstr "Don't hesitate to contact us. Our team is here to help."
+
+msgid "Nos coordonnées"
+msgstr "Our contact details"
+
+msgid "Horaires d'ouverture"
+msgstr "Opening hours"
+
+msgid "Lundi - Vendredi"
+msgstr "Monday - Friday"
+
+msgid "Samedi"
+msgstr "Saturday"
+
+msgid "Dimanche"
+msgstr "Sunday"
+
+msgid "Fermé"
+msgstr "Closed"
+
+msgid "Suivez-nous"
+msgstr "Follow us"
+
+msgid "Envoyez-nous un message"
+msgstr "Send us a message"
+
+msgid ""
+"Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus "
+"brefs délais."
+msgstr ""
+"Fill out the form below and we will get back to you as soon as possible."
+
+msgid "Votre nom"
+msgstr "Your name"
+
+msgid "Votre email"
+msgstr "Your email"
+
+msgid "- Objet de votre demande -"
+msgstr "- Subject of your request -"
+
+msgid "Demande de devis"
+msgstr "Quote request"
+
+msgid "Demande d'information"
+msgstr "Information request"
+
+msgid "Proposition de partenariat"
+msgstr "Partnership proposal"
+
+msgid "Candidature / Recrutement"
+msgstr "Job application / Recruitment"
+
+msgid "Autre"
+msgstr "Other"
+
+msgid "Votre message"
+msgstr "Your message"
+
+msgid "Envoyer le message"
+msgstr "Send message"
+
+msgid "Effacer"
+msgstr "Clear"
+
+msgid "Questions fréquentes"
+msgstr "Frequently asked questions"
+
+msgid "Comment demander un devis ?"
+msgstr "How to request a quote?"
+
+msgid ""
+"Vous pouvez nous envoyer un message via le formulaire ci-dessus en "
+"sélectionnant \"Demande de devis\" comme objet. Décrivez votre projet et "
+"nous vous répondrons avec une proposition personnalisée sous 48 heures."
+msgstr ""
+"You can send us a message via the form above by selecting \"Quote request\" "
+"as the subject. Describe your project and we will respond with a customized "
+"proposal within 48 hours."
+
+msgid "Quels types de projets acceptez-vous ?"
+msgstr "What types of projects do you accept?"
+
+msgid ""
+"Nous intervenons sur des projets de toutes tailles : sites web, applications"
+" métiers, plateformes de gestion, solutions de Business Intelligence, "
+"projets IoT, identités graphiques et bien plus encore."
+msgstr ""
+"We work on projects of all sizes: websites, business applications, "
+"management platforms, Business Intelligence solutions, IoT projects, graphic"
+" identities, and much more."
+
+msgid "Travaillez-vous avec des clients hors de Côte d'Ivoire ?"
+msgstr "Do you work with clients outside of Côte d'Ivoire?"
+
+msgid ""
+"Oui, nous accompagnons des clients dans toute l'Afrique de l'Ouest et au-"
+"delà. Nos équipes sont habituées à travailler à distance et peuvent "
+"s'adapter à vos contraintes géographiques."
+msgstr ""
+"Yes, we support clients throughout West Africa and beyond. Our teams are "
+"accustomed to working remotely and can adapt to your geographical "
+"constraints."
+
+msgid "Besoin d'une réponse rapide ?"
+msgstr "Need a quick answer?"
+
+msgid "Appelez-nous directement au"
+msgstr "Call us directly at"
+
+msgid "ou envoyez un email à"
+msgstr "or send an email to"
+
+msgid ""
+"Nous nous engageons à répondre à toutes les demandes sous 24 à 48 heures "
+"ouvrables."
+msgstr ""
+"We are committed to responding to all inquiries within 24 to 48 business "
+"hours."
+
+msgid "Nos réalisations !"
+msgstr "Our achievements!"
+
+msgid ""
+"Découvrez une sélection de projets que nous avons réalisés<br />\n"
+"\t\t\t\t\t\t\t\t\tpour nos clients à travers différents secteurs d'activité."
+msgstr ""
+"Discover a selection of projects we have completed<br />\n"
+"\t\t\t\t\t\t\t\t\tfor our clients across various industries."
+
+msgid "1. Enrôlement biométrique - Consulat du Togo"
+msgstr "1. Biometric enrollment - Consulate of Togo"
+
+msgid ""
+"Mise en place d'une plateforme d'enrôlement biométrique et de production de "
+"cartes d'identité"
+msgstr ""
+"Implementation of a biometric enrollment platform and identity card "
+"production system"
+
+msgid ""
+"AIDN a conçu et déployé pour le Consulat du Togo une plateforme sécurisée "
+"d'enrôlement biométrique et de production de cartes d'identité, remplaçant "
+"l'ancien système non biométrique. La solution, développée en Laravel et "
+"MySQL avec une application Python de capture d'empreintes, permet de gérer "
+"l'ensemble du processus — de l'enregistrement des citoyens au suivi en temps"
+" réel de la production des cartes — tout en assurant la collaboration entre "
+"les services consulaires. En complément, un logiciel de gestion de "
+"trésorerie a également été développé pour garantir une traçabilité complète "
+"des flux financiers."
+msgstr ""
+"AIDN designed and deployed a secure biometric enrollment and identity card "
+"production platform for the Consulate of Togo, replacing the former non-"
+"biometric system. The solution, developed with Laravel and MySQL along with "
+"a Python fingerprint capture application, manages the entire process — from "
+"citizen registration to real-time card production tracking — while ensuring "
+"collaboration between consular services. Additionally, a treasury management"
+" software was also developed to guarantee complete traceability of financial"
+" flows."
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Consulat du Togo"
+msgstr "Consulate of Togo"
+
+msgid "Technologies"
+msgstr "Technologies"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Plateforme d'enrôlement biométrique et gestion administrative"
+msgstr "Biometric enrollment platform and administrative management"
+
+msgid "2. Plateforme DPSE"
+msgstr "2. DPSE Platform"
+
+msgid ""
+"Suivi-évaluation des plans d'actions pour le Ministère des Finances et du "
+"Budget"
+msgstr ""
+"Monitoring and evaluation of action plans for the Ministry of Finance and "
+"Budget"
+
+msgid ""
+"Conception et développement d'une plateforme web complète de suivi-"
+"évaluation permettant à la Direction de la Planification et du Suivi-"
+"Évaluation (DPSE) de gérer ses plans d'actions, suivre l'exécution des "
+"activités, générer des rapports automatisés et piloter la performance "
+"opérationnelle en temps réel."
+msgstr ""
+"Design and development of a comprehensive web-based monitoring and "
+"evaluation platform enabling the Directorate of Planning and Monitoring-"
+"Evaluation (DPSE) to manage its action plans, track activity execution, "
+"generate automated reports, and monitor operational performance in real "
+"time."
+
+msgid "Ministère des Finances et du Budget (MFB)"
+msgstr "Ministry of Finance and Budget (MFB)"
+
+msgid "Application web multi-tenant"
+msgstr "Multi-tenant web application"
+
+msgid "3. TOUBABI"
+msgstr "3. TOUBABI"
+
+msgid "Site de recherche immobilier en ligne"
+msgstr "Online real estate search website"
+
+msgid ""
+"Plateforme de recherche immobilière en ligne permettant aux utilisateurs de "
+"trouver des biens immobiliers disponibles à la location ou à la vente, avec "
+"un système de filtres avancés et une interface intuitive."
+msgstr ""
+"Online real estate search platform allowing users to find properties "
+"available for rent or sale, with an advanced filtering system and an "
+"intuitive interface."
+
+msgid "Plateforme immobilière"
+msgstr "Real estate platform"
+
+msgid "4. Gestion de Caisse"
+msgstr "4. Cash Register Management"
+
+msgid "Logiciel de gestion pour restaurant"
+msgstr "Restaurant management software"
+
+msgid ""
+"Développement d'un logiciel de gestion de caisse destiné aux restaurants, "
+"permettant de gérer les commandes, les paiements, le suivi des ventes et la "
+"comptabilité quotidienne de manière simplifiée."
+msgstr ""
+"Development of a cash register management software for restaurants, enabling"
+" order management, payment processing, sales tracking, and simplified daily "
+"accounting."
+
+msgid "Application de gestion"
+msgstr "Management application"
+
+msgid "5. Villa la Louisette"
+msgstr "5. Villa la Louisette"
+
+msgid "Site vitrine pour restaurant"
+msgstr "Showcase website for a restaurant"
+
+msgid ""
+"Conception d'un site vitrine élégant et optimisé pour le référencement, "
+"présentant le restaurant, ses menus, son ambiance et permettant aux clients "
+"de découvrir l'établissement en ligne."
+msgstr ""
+"Design of an elegant, SEO-optimized showcase website presenting the "
+"restaurant, its menus, its atmosphere, and allowing customers to discover "
+"the establishment online."
+
+msgid "Site vitrine responsive"
+msgstr "Responsive showcase website"
+
+msgid "6. Site vitrine AIDN"
+msgstr "6. AIDN Showcase Website"
+
+msgid "Présence en ligne et communication institutionnelle"
+msgstr "Online presence and institutional communication"
+
+msgid ""
+"Conception et réalisation du site web institutionnel de l'Agence Ivoirienne "
+"de Développement Numérique, présentant les services, les produits et le "
+"portfolio de l'entreprise avec un design moderne et responsive."
+msgstr ""
+"Design and development of the institutional website of the Ivorian Agency "
+"for Digital Development, showcasing the company's services, products, and "
+"portfolio with a modern and responsive design."
+
+msgid "AIDN (projet interne)"
+msgstr "AIDN (internal project)"
+
+msgid "Nos domaines d'intervention"
+msgstr "Our areas of intervention"
+
+msgid "Applications web et métiers"
+msgstr "Web and business applications"
+
+msgid "Plateformes de gestion et de suivi"
+msgstr "Management and monitoring platforms"
+
+msgid "Sites vitrines et e-commerce"
+msgstr "Showcase websites and e-commerce"
+
+msgid "Tableaux de bord et Business Intelligence"
+msgstr "Dashboards and Business Intelligence"
+
+msgid "Solutions IoT et systèmes embarqués"
+msgstr "IoT solutions and embedded systems"
+
+msgid "Identités visuelles et supports graphiques"
+msgstr "Visual identities and graphic materials"
+
+msgid ""
+"Chaque projet est unique. Nous mettons un point d'honneur à comprendre les "
+"besoins spécifiques de nos clients pour proposer des solutions sur mesure, "
+"performantes et évolutives."
+msgstr ""
+"Every project is unique. We take pride in understanding the specific needs "
+"of our clients to deliver custom, high-performance, and scalable solutions."
+
+msgid "Discuter de votre projet"
+msgstr "Discuss your project"
+
+msgid "Nos Produits"
+msgstr "Our Products"
+
+msgid ""
+"Des solutions numériques innovantes, taillées pour votre transformation "
+"structurelle !"
+msgstr ""
+"Innovative digital solutions, designed for your structural transformation!"
+
+msgid ""
+"Nous concevons des outils digitaux performants qui accélèrent la croissance "
+"de votre organisation et optimisent vos processus métiers."
+msgstr ""
+"We design high-performance digital tools that accelerate your organization's"
+" growth and optimize your business processes."
+
+msgid "Découvrir nos produits"
+msgstr "Discover our products"
+
+msgid "Notre vision"
+msgstr "Our vision"
+
+msgid "Des solutions numériques à la hauteur des défis de l'heure..."
+msgstr "Digital solutions that meet today's challenges..."
+
+msgid ""
+"AIDN accompagne les entreprises et les administrations publiques dans leur "
+"transformation digitale. Nous concevons des plateformes web, des "
+"applications métiers et des outils de pilotage adaptés aux réalités du "
+"marché et aux exigences modernes."
+msgstr ""
+"AIDN supports businesses and public administrations in their digital "
+"transformation. We design web platforms, business applications, and "
+"management tools adapted to market realities and modern requirements."
+
+msgid ""
+"Notre approche allie expertise technique, connaissance du terrain et vision "
+"stratégique. Chaque projet est une opportunité de créer des solutions "
+"durables qui évoluent avec vos besoins et génèrent un impact mesurable."
+msgstr ""
+"Our approach combines technical expertise, field knowledge, and strategic "
+"vision. Every project is an opportunity to create sustainable solutions that"
+" evolve with your needs and generate measurable impact."
+
+msgid "Transformation Digitale"
+msgstr "Digital Transformation"
+
+msgid "Applications Web"
+msgstr "Web Applications"
+
+msgid "Business Intelligence"
+msgstr "Business Intelligence"
+
+msgid "Data Science & IA"
+msgstr "Data Science & AI"
+
+msgid "Cybersécurité"
+msgstr "Cybersecurity"
+
+msgid "IoT & Embarqué"
+msgstr "IoT & Embedded"
+
+msgid "Nos produits « By AIDN »"
+msgstr "Our products « By AIDN »"
+
+msgid "Ask for data"
+msgstr "Ask for data"
+
+msgid ""
+"Plateforme d'accès à l'information fiable. Consultez des données vérifiées, "
+"explorez des tableaux de bord interactifs et interrogez un assistant "
+"intelligent pour des questions précises."
+msgstr ""
+"Reliable information access platform. Browse verified data, explore "
+"interactive dashboards, and query an intelligent assistant for precise "
+"answers."
+
+msgid "Tableau de bord"
+msgstr "Dashboard"
+
+msgid "Chatbot intelligent"
+msgstr "Intelligent chatbot"
+
+msgid "Statistiques"
+msgstr "Statistics"
+
+msgid "Revues & analyses"
+msgstr "Reviews & analyses"
+
+msgid "Ivoire plan"
+msgstr "Ivoire plan"
+
+msgid ""
+"Plateforme complète d'éducation, de planification stratégique et de suivi-"
+"évaluation. Structurez vos plans d'actions et mesurez l'atteinte de vos "
+"objectifs en temps réel."
+msgstr ""
+"Comprehensive education, strategic planning, and monitoring-evaluation "
+"platform. Structure your action plans and measure the achievement of your "
+"objectives in real time."
+
+msgid "Planificateur"
+msgstr "Planner"
+
+msgid "Rapports automatisés"
+msgstr "Automated reports"
+
+msgid "Suivi-évaluation"
+msgstr "Monitoring & evaluation"
+
+msgid "Indicateurs de performance"
+msgstr "Performance indicators"
+
+msgid "Médiva, mon médecin mobile"
+msgstr "Médiva, my mobile doctor"
+
+msgid ""
+"Application de digitalisation de la médecine et de la pharmacie. "
+"Téléconsultation, ordonnances numériques, pharmacie en ligne et suivi "
+"médical personnalisé."
+msgstr ""
+"Application for the digitalization of medicine and pharmacy. "
+"Teleconsultation, digital prescriptions, online pharmacy, and personalized "
+"medical follow-up."
+
+msgid "Téléconsultation"
+msgstr "Teleconsultation"
+
+msgid "Pharmacie en ligne"
+msgstr "Online pharmacy"
+
+msgid "Ordonnances numériques"
+msgstr "Digital prescriptions"
+
+msgid "Suivi médical"
+msgstr "Medical follow-up"
+
+msgid "Findme"
+msgstr "Findme"
+
+msgid ""
+"Le Lens des réseaux sociaux. Retrouvez tous les profils sociaux d'une "
+"personne à partir d'une simple image grâce à la reconnaissance faciale et "
+"l'intelligence artificielle."
+msgstr ""
+"The Lens of social media. Find all social profiles of a person from a simple"
+" image using facial recognition and artificial intelligence."
+
+msgid "Recherche par image"
+msgstr "Image search"
+
+msgid "Détection de profils"
+msgstr "Profile detection"
+
+msgid "Multi-réseaux"
+msgstr "Multi-network"
+
+msgid "Identification rapide"
+msgstr "Quick identification"
+
+msgid "Nala"
+msgstr "Nala"
+
+msgid ""
+"Votre assistant conversationnel intelligent en langues locales ivoiriennes. "
+"Échangez naturellement, traduisez vos conversations et obtenez des réponses "
+"utiles, à l'oral et à l'écrit."
+msgstr ""
+"Your intelligent conversational assistant in Ivorian local languages. Chat "
+"naturally, translate your conversations, and get useful answers, both spoken"
+" and written."
+
+msgid "Conversation vocale"
+msgstr "Voice conversation"
+
+msgid "Traduction instantanée"
+msgstr "Instant translation"
+
+msgid "Assistance intelligente"
+msgstr "Intelligent assistance"
+
+msgid "Mode hors-ligne"
+msgstr "Offline mode"
+
+msgid "TrackFleet"
+msgstr "TrackFleet"
+
+msgid ""
+"Solution de suivi et de gestion de flottes de véhicules en temps réel : "
+"géolocalisation, historique des trajets, alertes et rapports de performance."
+msgstr ""
+"Real-time vehicle fleet tracking and management solution: geolocation, trip "
+"history, alerts, and performance reports."
+
+msgid "Géolocalisation"
+msgstr "Geolocation"
+
+msgid "Suivi en temps réel"
+msgstr "Real-time tracking"
+
+msgid "Historique des trajets"
+msgstr "Trip history"
+
+msgid "Gestion de flotte"
+msgstr "Fleet management"
+
+msgid "Produit en cours de développement"
+msgstr "Product under development"
+
+msgid ""
+"Ce produit est actuellement en cours de développement. Il sera bientôt "
+"disponible. Restez connectés !"
+msgstr ""
+"This product is currently under development. It will be available soon. Stay"
+" tuned!"
+
+msgid "Compris"
+msgstr "Got it"
+
+msgid "Travaillons ensemble"
+msgstr "Let's work together"
+
+msgid ""
+"Vous avez un projet numérique ? Parlons-en ! Notre équipe est prête à vous "
+"accompagner dans la conception et la réalisation de solutions innovantes "
+"adaptées à vos besoins."
+msgstr ""
+"Do you have a digital project? Let's talk about it! Our team is ready to "
+"support you in the design and development of innovative solutions tailored "
+"to your needs."
+
+msgid "Votre nom complet"
+msgstr "Your full name"
+
+msgid "votre.email@exemple.com"
+msgstr "your.email@example.com"
+
+msgid "Objet"
+msgstr "Subject"
+
+msgid "De quoi s'agit-il ?"
+msgstr "What is it about?"
+
+msgid "Décrivez votre projet..."
+msgstr "Describe your project..."
+
+msgid "Agence Ivoirienne de Développement Numérique. Tous droits réservés."
+msgstr "Ivorian Agency for Digital Development. All rights reserved."
+
+msgid "Le produit"
+msgstr "The product"
+
+msgid ""
+"est actuellement en cours de développement. Il sera bientôt disponible. "
+"Restez connectés !"
+msgstr ""
+"is currently under development. It will be available soon. Stay tuned!"
+
+msgid "AIDN - Voir plus"
+msgstr "AIDN - Read more"
+
+msgid "L'intelligence Numérique"
+msgstr "Digital Intelligence"
+
+msgid "Au Service De La Transformation"
+msgstr "At The Service Of Transformation"
+
+msgid ""
+"AIDN accompagne les entreprises et les administrations dans leur<br />\n"
+"\t\t\t\t\t\t\t\t\ttransformation digitale grâce à des solutions innovantes et sur mesure."
+msgstr ""
+"AIDN supports businesses and administrations in their<br />\n"
+"\t\t\t\t\t\t\t\t\tdigital transformation through innovative and custom solutions."
+
+msgid ""
+"Dans un monde en constante évolution, la transformation numérique n'est plus"
+" une option, c'est une nécessité. Les organisations qui embrassent le "
+"digital gagnent en efficacité, en compétitivité et en capacité d'innovation."
+" Chez <b>AIDN</b> (Agence Ivoirienne de Développement Numérique), nous "
+"croyons que la technologie doit être un levier de croissance accessible à "
+"tous."
+msgstr ""
+"In a constantly evolving world, digital transformation is no longer an "
+"option, it is a necessity. Organizations that embrace digital gain in "
+"efficiency, competitiveness, and innovation capacity. At <b>AIDN</b> "
+"(Ivorian Agency for Digital Development), we believe that technology must be"
+" a growth driver accessible to everyone."
+
+msgid "Notre approche repose sur trois piliers fondamentaux :"
+msgstr "Our approach is built on three fundamental pillars:"
+
+msgid ""
+"<b>L'écoute</b> : Comprendre vos besoins réels, vos contraintes et vos "
+"ambitions pour concevoir des solutions qui vous ressemblent."
+msgstr ""
+"<b>Listening</b>: Understanding your real needs, constraints, and ambitions "
+"to design solutions that reflect who you are."
+
+msgid ""
+"<b>L'expertise</b> : Mobiliser nos compétences en développement web, data "
+"science, cybersécurité, IoT et infographie pour délivrer des solutions "
+"robustes."
+msgstr ""
+"<b>Expertise</b>: Leveraging our skills in web development, Data Science, "
+"cybersecurity, IoT, and graphic design to deliver robust solutions."
+
+msgid ""
+"<b>L'accompagnement</b> : Vous guider à chaque étape, de la conception au "
+"déploiement, et assurer un suivi post-livraison pour garantir la pérennité "
+"de vos solutions."
+msgstr ""
+"<b>Support</b>: Guiding you at every step, from design to deployment, and "
+"providing post-delivery follow-up to ensure the longevity of your solutions."
+
+msgid ""
+"Que vous soyez une administration publique cherchant à digitaliser ses "
+"processus, une entreprise privée souhaitant optimiser sa gestion, ou une "
+"organisation en quête d'outils de pilotage performants, AIDN dispose des "
+"compétences et de l'expérience pour répondre à vos attentes."
+msgstr ""
+"Whether you are a public administration looking to digitize its processes, a"
+" private company seeking to optimize its management, or an organization in "
+"search of powerful management tools, AIDN has the skills and experience to "
+"meet your expectations."
+
+msgid ""
+"Nos équipes, composées d'ingénieurs et de consultants formés dans les "
+"meilleures écoles, allient rigueur technique et créativité pour transformer "
+"vos idées en solutions concrètes. Chaque projet est pour nous une "
+"opportunité de repousser les limites de l'innovation au service de votre "
+"réussite."
+msgstr ""
+"Our teams, made up of engineers and consultants trained at the best schools,"
+" combine technical rigor and creativity to turn your ideas into concrete "
+"solutions. Every project is an opportunity for us to push the boundaries of "
+"innovation in service of your success."
+
+msgid "Nos engagements"
+msgstr "Our commitments"
+
+msgid "Qualité"
+msgstr "Quality"
+
+msgid ""
+"Des solutions testées, sécurisées et conformes aux standards internationaux."
+msgstr "Tested, secure solutions that comply with international standards."
+
+msgid "Délais"
+msgstr "Deadlines"
+
+msgid ""
+"Un respect strict des calendriers de livraison avec une communication "
+"transparente."
+msgstr ""
+"Strict adherence to delivery schedules with transparent communication."
+
+msgid ""
+"L'utilisation des technologies les plus récentes pour vous donner un "
+"avantage compétitif."
+msgstr "Using the latest technologies to give you a competitive advantage."
+
+msgid "Support"
+msgstr "Support"
+
+msgid ""
+"Un accompagnement continu après la livraison pour assurer le bon "
+"fonctionnement de vos solutions."
+msgstr ""
+"Continuous support after delivery to ensure the smooth operation of your "
+"solutions."
+
+msgid ""
+"Vous faire rêver à travers le digital - c'est notre promesse. Ensemble, "
+"construisons les solutions numériques de demain."
+msgstr ""
+"Making your dreams come true through digital - that is our promise. "
+"Together, let's build tomorrow's digital solutions."
+
+msgid "Français"
+msgstr "French"
+
+msgid "English"
+msgstr "English"
+
+msgid "Actif"
+msgstr "Active"
+
+msgid "Suspendu"
+msgstr "Suspended"
+
+msgid "Essai"
+msgstr "Trial"
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Statut"
+msgstr "Status"
+
+msgid "Configuration visuelle"
+msgstr "Visual configuration"
+
+msgid "Logo, couleurs, nom affiché, etc."
+msgstr "Logo, colors, display name, etc."
+
+msgid "Créé le"
+msgstr "Created on"
+
+msgid "Modifié le"
+msgstr "Modified on"
+
+msgid "Organisation"
+msgstr "Organization"
+
+msgid "Organisations"
+msgstr "Organizations"
+
+msgid "Domaine"
+msgstr "Domain"
+
+msgid "Exemple : dpse.mfb.gouv.ci ou app.aidn.ci"
+msgstr "Example: dpse.mfb.gouv.ci or app.aidn.ci"
+
+msgid "Domaine principal"
+msgstr "Primary domain"
+
+msgid "Domaine principal utilisé pour les liens et emails"
+msgstr "Primary domain used for links and emails"
+
+msgid "Domaines"
+msgstr "Domains"
+
+msgid "Administrateur organisation"
+msgstr "Organization administrator"
+
+msgid "Expert"
+msgstr "Expert"
+
+msgid "Utilisateur lecture"
+msgstr "Read-only user"
+
+msgid "Formateur"
+msgstr "Trainer"
+
+msgid "Utilisateur"
+msgstr "User"
+
+msgid "Rôle SaaS"
+msgstr "SaaS role"
+
+msgid "Admin organisation"
+msgstr "Organization admin"
+
+msgid "Donne les mêmes droits que le rôle admin_org"
+msgstr "Grants the same permissions as the admin_org role"
+
+msgid "Fonction"
+msgstr "Position"
+
+msgid "Ajouté le"
+msgstr "Added on"
+
+msgid "Membre organisation"
+msgstr "Organization member"
+
+msgid "Membres organisations"
+msgstr "Organization members"
+
+msgid "Créé par"
+msgstr "Created by"
+
+msgid "Point Focal"
+msgstr "Focal Point"
+
+msgid "Responsable"
+msgstr "Manager"
+
+msgid "Participant"
+msgstr "Participant"
+
+msgid "Plan d'action"
+msgstr "Action plan"
+
+msgid "Rôle dans le PA"
+msgstr "Role in the action plan"
+
+msgid "Invité le"
+msgstr "Invited on"
+
+msgid "Membre du plan d'action"
+msgstr "Action plan member"
+
+msgid "Membres des plans d'action"
+msgstr "Action plan members"

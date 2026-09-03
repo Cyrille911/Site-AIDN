@@ -26,7 +26,7 @@ def get_pa_role(user, plan_action):
 def academy_index(request):
     """Vue temporaire du module academy."""
     organization = getattr(request, 'organization', None)
-    return render(request, 'academy/index.html', {
+    return render(request, 'academy/index1.html', {
         'organization': organization,
     })
 

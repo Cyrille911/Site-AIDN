@@ -25,6 +25,30 @@
 						<span class="logo-text">AIDN</span>
 					</a>
 				</div>
+				<a href="#" class="mobile-menu-toggle" id="mobile-menu-toggle">
+					<span class="hamburger-icon"><span></span><span></span><span></span></span>
+					<span class="hamburger-label">Menu</span>
+				</a>
+				<ul class="navbar-menu" id="navbar-menu">
+					<li class="menu-close-item"><a href="#" class="menu-close" id="menu-close">&times;</a></li>
+					<li><a href="{% url 'accueil' %}" class="nav-link">{% trans "Accueil" %}</a></li>
+					<li><a href="{% url 'accueil' %}#metiers" class="nav-link">{% trans "Nos métiers" %}</a></li>
+					<li><a href="{% url 'nos_produits' %}" class="nav-link">{% trans "Nos produits" %}</a></li>
+					<li><a href="{% url 'portfolio' %}" class="nav-link">{% trans "Portfolio" %}</a></li>
+					<li><a href="{% url 'a_propos' %}" class="nav-link">{% trans "À propos" %}</a></li>
+					<li><a href="{% url 'nous_joindre' %}" class="nav-link active">{% trans "Nous joindre" %}</a></li>
+					<li class="mobile-lang-item">
+						<form action="{% url 'set_language' %}" method="post">
+							{% csrf_token %}
+							<input type="hidden" name="next" value="{{ request.path }}">
+							{% get_current_language as LANGUAGE_CODE %}
+							<select name="language" class="lang-select mobile-lang-select" onchange="this.form.submit()">
+								<option value="fr"{% if LANGUAGE_CODE == 'fr' %} selected{% endif %}>Français</option>
+								<option value="en"{% if LANGUAGE_CODE == 'en' %} selected{% endif %}>English</option>
+							</select>
+						</form>
+					</li>
+				</ul>
 				<div class="navbar-right">
 					<div class="language-selector">
 						<form action="{% url 'set_language' %}" method="post">
@@ -41,32 +65,6 @@
 				</div>
 			</div>
 		</nav>
-
-		<!-- Mobile Menu -->
-		<a href="#" class="mobile-menu-toggle" id="mobile-menu-toggle">
-			<span class="hamburger-icon"><span></span><span></span><span></span></span>
-			<span class="hamburger-label">Menu</span>
-		</a>
-		<ul class="navbar-menu" id="navbar-menu">
-			<li class="menu-close-item"><a href="#" class="menu-close" id="menu-close">&times;</a></li>
-			<li><a href="{% url 'accueil' %}" class="nav-link">{% trans "Accueil" %}</a></li>
-			<li><a href="{% url 'accueil' %}#metiers" class="nav-link">{% trans "Nos métiers" %}</a></li>
-			<li><a href="{% url 'nos_produits' %}" class="nav-link">{% trans "Nos produits" %}</a></li>
-			<li><a href="{% url 'portfolio' %}" class="nav-link">{% trans "Portfolio" %}</a></li>
-			<li><a href="{% url 'a_propos' %}" class="nav-link">{% trans "À propos" %}</a></li>
-			<li><a href="{% url 'nous_joindre' %}" class="nav-link active">{% trans "Nous joindre" %}</a></li>
-			<li class="mobile-lang-item">
-				<form action="{% url 'set_language' %}" method="post">
-					{% csrf_token %}
-					<input type="hidden" name="next" value="{{ request.path }}">
-					{% get_current_language as LANGUAGE_CODE %}
-					<select name="language" class="lang-select mobile-lang-select" onchange="this.form.submit()">
-						<option value="fr"{% if LANGUAGE_CODE == 'fr' %} selected{% endif %}>Français</option>
-						<option value="en"{% if LANGUAGE_CODE == 'en' %} selected{% endif %}>English</option>
-					</select>
-				</form>
-			</li>
-		</ul>
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">

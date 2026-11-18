@@ -99,6 +99,15 @@ sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d votre-domaine.com
 ```
 
+## Modifier le fichier .env
+
+Après toute modification du `.env` (mot de passe SMTP, etc.), `restart` ne
+suffit pas : les variables ne sont relues qu'à la recréation du conteneur.
+
+```bash
+docker-compose up -d --force-recreate web
+```
+
 ## Mise à jour de l'application
 
 ```bash

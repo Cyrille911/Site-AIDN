@@ -1263,6 +1263,7 @@ def invite_to_plan_action(request, plan_id):
         # Envoyer un email d'invitation
         try:
             from django.core.mail import send_mail
+            from django.conf import settings
             subject = f"Invitation à participer au plan d'action : {plan_action.titre}"
             message = (
                 f"Bonjour,\n\n"
@@ -1271,7 +1272,7 @@ def invite_to_plan_action(request, plan_id):
                 f"Connectez-vous à la plateforme AIDN pour y accéder.\n\n"
                 f"Cordialement,\nL'équipe AIDN"
             )
-            send_mail(subject, message, 'aidn.tech@gmail.com', [email], fail_silently=True)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email], fail_silently=True)
         except Exception as e:
             logger.warning(f"Erreur envoi email invitation : {e}")
 

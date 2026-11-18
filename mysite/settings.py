@@ -180,7 +180,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Serveur SMTP pour Gmail
 EMAIL_PORT = 587  # Port pour TLS
 EMAIL_USE_TLS = True  # Utiliser TLS
-EMAIL_HOST_USER = 'cyrilletaha01@gmail.com'  # adresse e-mail
-EMAIL_HOST_PASSWORD = 'ivhsvvuuelnjvzqx'  # mot de passe
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')  # adresse e-mail
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')  # mot de passe
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Email par défaut pour l'envoi
-CONTACT_EMAIL = 'aidn.tech@gmail.com'
+CONTACT_EMAIL = config('CONTACT_EMAIL', default='contact@aidn.ci')

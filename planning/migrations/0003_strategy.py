@@ -4,6 +4,37 @@ import django.db.models.deletion
 from django.db import migrations, models
 
 
+def _table_exists(schema_editor, table):
+    return table in schema_editor.connection.introspection.table_names()
+
+
+def forwards(apps, schema_editor):
+    """
+    Deux cas :
+    - base héritée de l'ancien app `strategy` (dpse) : on renomme les tables ;
+    - base neuve : on crée les tables à partir de l'état des modèles.
+    """
+    legacy = {
+        'strategy_strategicplan': 'planning_strategicplan',
+        'strategy_strategicaxis': 'planning_strategicaxis',
+    }
+    if all(_table_exists(schema_editor, old) for old in legacy):
+        for old, new in legacy.items():
+            schema_editor.execute(f'ALTER TABLE {schema_editor.quote_name(old)} RENAME TO {schema_editor.quote_name(new)}')
+        return
+    for name in ('StrategicPlan', 'StrategicAxis'):
+        model = apps.get_model('planning', name)
+        if not _table_exists(schema_editor, model._meta.db_table):
+            schema_editor.create_model(model)
+
+
+def backwards(apps, schema_editor):
+    for name in ('StrategicAxis', 'StrategicPlan'):
+        model = apps.get_model('planning', name)
+        if _table_exists(schema_editor, model._meta.db_table):
+            schema_editor.delete_model(model)
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -47,9 +78,8 @@ class Migration(migrations.Migration):
                     },
                 ),
             ],
-            database_operations=[
-                migrations.RunSQL("ALTER TABLE strategy_strategicplan RENAME TO planning_strategicplan;"),
-                migrations.RunSQL("ALTER TABLE strategy_strategicaxis RENAME TO planning_strategicaxis;"),
-            ],
+            database_operations=[],
         ),
+        # Après l'état : les modèles StrategicPlan/StrategicAxis sont connus
+        migrations.RunPython(forwards, backwards),
     ]

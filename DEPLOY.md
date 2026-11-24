@@ -99,6 +99,18 @@ sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d votre-domaine.com
 ```
 
+## Base de données
+
+Django utilise **PostgreSQL** (conteneur `db`) dès que `DB_HOST` est défini
+dans `.env`. Sans `DB_HOST` (dev sans Docker), il retombe sur SQLite
+(`db.sqlite3`, non versionné).
+
+Sauvegarde / restauration :
+```bash
+docker-compose exec db pg_dump -U $POSTGRES_USER $POSTGRES_DB > backup.sql
+docker-compose exec -T db psql -U $POSTGRES_USER $POSTGRES_DB < backup.sql
+```
+
 ## Modifier le fichier .env
 
 Après toute modification du `.env` (mot de passe SMTP, etc.), `restart` ne

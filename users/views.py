@@ -129,7 +129,7 @@ def update_user_details(request, user_id):
                 subject = "Mise à jour de votre profil"
                 message = f"""Bonjour {user.first_name},
                 
-Votre profil sur la plateforme DPSE a été mis à jour par un administrateur.
+Votre profil sur la plateforme AIDN a été mis à jour par un administrateur.
 Voici vos nouvelles informations :
 Nom : {user.last_name}
 Prénom : {user.first_name}

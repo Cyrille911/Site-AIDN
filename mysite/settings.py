@@ -30,7 +30,7 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config(
     'ALLOWED_HOSTS',
-    default='localhost,127.0.0.1,app.aidn.ci,dpse.aidn.ci,.aidn.ci',
+    default='localhost,127.0.0.1,aidn.ci,www.aidn.ci,app.aidn.ci,.aidn.ci',
     cast=Csv()
 )
 

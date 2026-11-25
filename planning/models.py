@@ -52,7 +52,7 @@ class Domain(models.Model):
     )
     domain = models.CharField(
         _('Domaine'), max_length=253, unique=True, db_index=True,
-        help_text=_('Exemple : dpse.mfb.gouv.ci ou app.aidn.ci')
+        help_text=_('Exemple : dpse.aidn.ci ou app.aidn.ci')
     )
     is_primary = models.BooleanField(
         _('Domaine principal'), default=False,

@@ -39,8 +39,8 @@ c:\Users\cyril\aidn\
 Variables à positionner dans le `.env` de production :
 
 ```env
-ALLOWED_HOSTS=localhost,127.0.0.1,app.aidn.ci,dpse.aidn.ci,dpse.mfb.gouv.ci
-CSRF_TRUSTED_ORIGINS=https://*.aidn.ci,https://*.mfb.gouv.ci
+ALLOWED_HOSTS=localhost,127.0.0.1,app.aidn.ci,dpse.aidn.ci
+CSRF_TRUSTED_ORIGINS=https://*.aidn.ci
 SAAS_CENTRAL_DOMAIN=app.aidn.ci
 DATABASE_URL=mysql://user:pass@host:3306/dpse_db
 ```
@@ -81,7 +81,7 @@ La migration `core/0002_seed_dpse_organization.py` crée automatiquement l'organ
 
 1. **Connexion base de données** : basculer AIDN de SQLite vers la base MySQL de DPSE (même schéma, mêmes données).
 2. **Alignement Django** : passer AIDN en Django 5.2.10 pour correspondre à DPSE.
-3. **Déploiement domaines** : faire pointer `app.aidn.ci`, `dpse.aidn.ci` et `dpse.mfb.gouv.ci` vers l'application AIDN.
+3. **Déploiement domaines** : faire pointer `app.aidn.ci` et `dpse.aidn.ci` vers l'application AIDN.
 4. **Tests d'isolation** : vérifier que chaque organisation ne voit que ses propres données.
 5. **Page de sélection d'organisation** : pour les utilisateurs multi-tenant.
 6. **Celery** : déjà configuré avec Redis ; vérifier les tâches asynchrones de planning.

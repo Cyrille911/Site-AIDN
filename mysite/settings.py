@@ -30,13 +30,13 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config(
     'ALLOWED_HOSTS',
-    default='localhost,127.0.0.1,.pythonanywhere.com,app.aidn.ci,dpse.aidn.ci,dpse.mfb.gouv.ci,.aidn.ci,.mfb.gouv.ci',
+    default='localhost,127.0.0.1,app.aidn.ci,dpse.aidn.ci,.aidn.ci',
     cast=Csv()
 )
 
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
-    default='https://*.aidn.ci,https://*.mfb.gouv.ci,http://localhost:8000',
+    default='https://*.aidn.ci,http://localhost:8000',
     cast=Csv()
 )
 

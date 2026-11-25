@@ -1127,8 +1127,8 @@ msgstr "Organizations"
 msgid "Domaine"
 msgstr "Domain"
 
-msgid "Exemple : dpse.mfb.gouv.ci ou app.aidn.ci"
-msgstr "Example: dpse.mfb.gouv.ci or app.aidn.ci"
+msgid "Exemple : dpse.aidn.ci ou app.aidn.ci"
+msgstr "Example: dpse.aidn.ci or app.aidn.ci"
 
 msgid "Domaine principal"
 msgstr "Primary domain"

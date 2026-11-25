@@ -105,10 +105,19 @@ Django utilise **PostgreSQL** (conteneur `db`) dès que `DB_HOST` est défini
 dans `.env`. Sans `DB_HOST` (dev sans Docker), il retombe sur SQLite
 (`db.sqlite3`, non versionné).
 
-Sauvegarde / restauration :
+Sauvegarde automatique (serveur) : le timer systemd `backup-postgres.timer`
+lance `/root/backup_postgres.sh` chaque jour à 3h (AIDN + DPSE, rotation
+7 jours) dans `/root/backups/postgres/`.
+
 ```bash
-docker-compose exec db pg_dump -U $POSTGRES_USER $POSTGRES_DB > backup.sql
-docker-compose exec -T db psql -U $POSTGRES_USER $POSTGRES_DB < backup.sql
+systemctl list-timers backup-postgres.timer       # prochaine exécution
+journalctl -u backup-postgres.service -n 20        # historique
+systemctl start backup-postgres.service            # sauvegarde immédiate
+```
+
+Restauration :
+```bash
+gunzip -c /root/backups/postgres/aidn_XXXX.sql.gz | docker exec -i aidn-db psql -U aidn_user -d aidn_db
 ```
 
 ## Modifier le fichier .env
